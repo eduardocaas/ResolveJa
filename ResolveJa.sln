@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolveJa.Web.API", "ResolveJa.Web.API\ResolveJa.Web.API.csproj", "{20EF91AA-98B9-43B6-A6BC-3BE44B5CFB54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResolveJa.Web.API", "ResolveJa.Web.API\ResolveJa.Web.API.csproj", "{20EF91AA-98B9-43B6-A6BC-3BE44B5CFB54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolveJa.Core", "ResolveJa.Core\ResolveJa.Core.csproj", "{F63E1ECB-79C3-4F9D-8022-D3124559DBA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResolveJa.Core", "ResolveJa.Core\ResolveJa.Core.csproj", "{F63E1ECB-79C3-4F9D-8022-D3124559DBA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolveJa.Infrastructure.Data", "ResolveJa.Infrastructure.Data\ResolveJa.Infrastructure.Data.csproj", "{DDAF896B-E326-4292-859F-7A44DED594DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResolveJa.Infrastructure.Data", "ResolveJa.Infrastructure.Data\ResolveJa.Infrastructure.Data.csproj", "{DDAF896B-E326-4292-859F-7A44DED594DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolveJa.Infrastructure.IoC", "ResolveJa.Infrastructure.IoC\ResolveJa.Infrastructure.IoC.csproj", "{1D7AE23B-A18A-4A9D-AD39-ED1A6DA0ACFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResolveJa.Infrastructure.IoC", "ResolveJa.Infrastructure.IoC\ResolveJa.Infrastructure.IoC.csproj", "{1D7AE23B-A18A-4A9D-AD39-ED1A6DA0ACFF}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ResolveJa.Web.Angular", "ResolveJa.Web.Angular\ResolveJa.Web.Angular.esproj", "{2968AB57-6AD0-48FC-A0E7-277A250891DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,12 @@ Global
 		{1D7AE23B-A18A-4A9D-AD39-ED1A6DA0ACFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D7AE23B-A18A-4A9D-AD39-ED1A6DA0ACFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D7AE23B-A18A-4A9D-AD39-ED1A6DA0ACFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2968AB57-6AD0-48FC-A0E7-277A250891DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2968AB57-6AD0-48FC-A0E7-277A250891DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2968AB57-6AD0-48FC-A0E7-277A250891DB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2968AB57-6AD0-48FC-A0E7-277A250891DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2968AB57-6AD0-48FC-A0E7-277A250891DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2968AB57-6AD0-48FC-A0E7-277A250891DB}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
