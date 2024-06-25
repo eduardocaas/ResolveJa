@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolveJa.Web.API", "ResolveJa.Web.API\ResolveJa.Web.API.csproj", "{20EF91AA-98B9-43B6-A6BC-3BE44B5CFB54}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolveJa.Core", "ResolveJa.Core\ResolveJa.Core.csproj", "{F63E1ECB-79C3-4F9D-8022-D3124559DBA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{20EF91AA-98B9-43B6-A6BC-3BE44B5CFB54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20EF91AA-98B9-43B6-A6BC-3BE44B5CFB54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20EF91AA-98B9-43B6-A6BC-3BE44B5CFB54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F63E1ECB-79C3-4F9D-8022-D3124559DBA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F63E1ECB-79C3-4F9D-8022-D3124559DBA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F63E1ECB-79C3-4F9D-8022-D3124559DBA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F63E1ECB-79C3-4F9D-8022-D3124559DBA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
