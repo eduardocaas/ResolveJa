@@ -8,5 +8,7 @@ namespace ResolveJa.Core.Enums
 {
     public enum TicketStatusEnum
     {
+        ABERTO = 0,
+        FECHADO = 1
     }
 }
