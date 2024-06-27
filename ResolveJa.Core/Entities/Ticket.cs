@@ -8,5 +8,9 @@ namespace ResolveJa.Core.Entities
 {
     public class Ticket : BaseEntity
     {
+        public string Titulo { get; private set; }
+        public string Cpf { get; private set; }
+        public string Email { get; private set; }
+
     }
 }
