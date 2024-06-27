@@ -18,5 +18,9 @@ namespace ResolveJa.Core.Entities
         public DateTime DataCriacao { get; private set; }
         public DateTime DataFechamento { get; private set; }
 
+        public int IdEmpresa { get; private set; }
+        public Empresa Empresa { get; private set; }
+        public int? IdFuncionario { get; private set; }
+        public Funcionario? Funcionario { get; private set; }
     }
 }
