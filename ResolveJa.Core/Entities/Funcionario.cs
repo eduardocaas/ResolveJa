@@ -11,5 +11,8 @@ namespace ResolveJa.Core.Entities
         public string Email { get; private set; }
         public string Nome { get; private set; }
         public DateTime DataAdmissao { get; private set; }
+
+        public int IdEmpresa { get; private set; }
+        public Empresa Empresa { get; private set; }
     }
 }
