@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResolveJa.Infrastructure.Io
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ResolveJa.Web.Angular", "ResolveJa.Web.Angular\ResolveJa.Web.Angular.esproj", "{2968AB57-6AD0-48FC-A0E7-277A250891DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolveJa.Web.MVC", "ResolveJa.Web.MVC\ResolveJa.Web.MVC.csproj", "{D8DF0960-E32A-41C7-A295-76479C9B54E5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResolveJa.Web.MVC", "ResolveJa.Web.MVC\ResolveJa.Web.MVC.csproj", "{D8DF0960-E32A-41C7-A295-76479C9B54E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolveJa.Application", "ResolveJa.Application\ResolveJa.Application.csproj", "{742372AE-C033-45B2-9ABF-03AEAFE5E259}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{D8DF0960-E32A-41C7-A295-76479C9B54E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8DF0960-E32A-41C7-A295-76479C9B54E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8DF0960-E32A-41C7-A295-76479C9B54E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{742372AE-C033-45B2-9ABF-03AEAFE5E259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{742372AE-C033-45B2-9ABF-03AEAFE5E259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{742372AE-C033-45B2-9ABF-03AEAFE5E259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{742372AE-C033-45B2-9ABF-03AEAFE5E259}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
