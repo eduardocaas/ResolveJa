@@ -52,6 +52,14 @@ namespace ResolveJa.Infrastructure.Data.Persistence.Mappings
                 .HasColumnType("DATETIME")
                 .HasDefaultValueSql("GETDATE()")
                 .IsRequired(false);
+
+            builder
+                .HasIndex(e => e.Url, "IX_Empresa_Url")
+                .IsUnique();
+
+            builder
+                .HasIndex(e => e.Cnpj, "IX_Empresa_Cnpj")
+                .IsUnique();
         }
     }
 }
