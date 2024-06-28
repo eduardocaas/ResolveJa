@@ -1,5 +1,4 @@
 ﻿using ResolveJa.Core.Enums;
-using ResolveJa.Core.Validations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
