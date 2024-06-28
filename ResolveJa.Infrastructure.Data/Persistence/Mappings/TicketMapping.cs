@@ -39,7 +39,7 @@ namespace ResolveJa.Infrastructure.Data.Persistence.Mappings
             builder
                 .Property(t => t.Status)
                 .HasDefaultValue(TicketStatusEnum.ABERTO)
-                .IsRequired(false);
+                .IsRequired();
 
             builder
                 .Property(t => t.Conteudo)
@@ -57,7 +57,7 @@ namespace ResolveJa.Infrastructure.Data.Persistence.Mappings
                 .Property(t => t.DataCriacao)
                 .HasColumnType("DATETIME")
                 .HasDefaultValueSql("GETDATE()")
-                .IsRequired(false);
+                .IsRequired();
 
             builder
                 .Property(t => t.DataFechamento)

@@ -51,7 +51,7 @@ namespace ResolveJa.Infrastructure.Data.Persistence.Mappings
                 .Property(e => e.DataAdmissao)
                 .HasColumnType("DATETIME")
                 .HasDefaultValueSql("GETDATE()")
-                .IsRequired(false);
+                .IsRequired();
 
             builder
                 .HasIndex(e => e.Url, "IX_Empresa_Url")

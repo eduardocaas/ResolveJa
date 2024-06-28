@@ -33,7 +33,7 @@ namespace ResolveJa.Infrastructure.Data.Persistence.Mappings
                 .Property(f => f.DataAdmissao)
                 .HasColumnType("DATETIME")
                 .HasDefaultValueSql("GETDATE()")
-                .IsRequired(false);
+                .IsRequired();
 
             builder
                 .HasIndex(f => f.Email, "IX_Funcionario_Email")
