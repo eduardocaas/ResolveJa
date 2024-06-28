@@ -13,7 +13,45 @@ namespace ResolveJa.Infrastructure.Data.Persistence.Mappings
     {
         public void Configure(EntityTypeBuilder<Empresa> builder)
         {
-            throw new NotImplementedException();
+            builder
+                .ToTable("Empresa")
+                .HasKey(e => e.Id);
+
+            builder
+                .Property(e => e.Url)
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(100)
+                .IsRequired();
+
+            builder
+                .Property(e => e.Nome)
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(100)
+                .IsRequired();
+
+            builder
+                .Property(e => e.Cnpj)
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(14)
+                .IsRequired();
+
+            builder
+                .Property(e => e.Ramo)
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(80)
+                .IsRequired();
+
+            builder
+                .Property(e => e.Descricao)
+                .HasColumnType("VARCHAR")
+                .HasMaxLength(500)
+                .IsRequired(false);
+
+            builder
+                .Property(e => e.DataAdmissao)
+                .HasColumnType("DATETIME")
+                .HasDefaultValueSql("GETDATE()")
+                .IsRequired(false);
         }
     }
 }
