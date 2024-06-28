@@ -15,8 +15,8 @@ namespace ResolveJa.Core.Entities
         public TicketStatusEnum Status { get; set; }
         public string Conteudo { get; private set; }
         public string Resposta { get; private set; }
-        public DateTime DataCriacao { get; private set; }
-        public DateTime DataFechamento { get; private set; }
+        public DateTime? DataCriacao { get; private set; }
+        public DateTime? DataFechamento { get; private set; }
 
         public int IdEmpresa { get; private set; }
         public Empresa Empresa { get; private set; }
