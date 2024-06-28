@@ -24,8 +24,5 @@ namespace ResolveJa.Core.Entities
         public int? IdFuncionario { get; private set; }
         public Funcionario? Funcionario { get; private set; }
 
-        public bool CpfValid()
-            => CpfValidation.IsCpf(this.Cpf);
-        
     }
 }
