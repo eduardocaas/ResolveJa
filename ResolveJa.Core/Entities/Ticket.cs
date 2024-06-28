@@ -1,4 +1,5 @@
 ﻿using ResolveJa.Core.Enums;
+using ResolveJa.Core.Validations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,9 @@ namespace ResolveJa.Core.Entities
         public Empresa Empresa { get; private set; }
         public int? IdFuncionario { get; private set; }
         public Funcionario? Funcionario { get; private set; }
+
+        public bool CpfValid()
+            => CpfValidation.IsCpf(this.Cpf);
+        
     }
 }
