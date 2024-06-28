@@ -13,6 +13,6 @@ namespace ResolveJa.Core.Entities
         public string Cnpj { get; private set; }
         public string Ramo { get; private set; }
         public string Descricao { get; private set; }
-        public DateTime DataAdmissao { get; private set; }
+        public DateTime? DataAdmissao { get; private set; }
     }
 }
