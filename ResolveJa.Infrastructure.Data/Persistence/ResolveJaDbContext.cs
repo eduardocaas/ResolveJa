@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,7 +22,11 @@ namespace ResolveJa.Infrastructure.Data.Persistence
         public DbSet<Ticket> Tickets { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
-            =>  builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        {
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+            base.OnModelCreating(builder);
+        }   
+
         
     }
 }
