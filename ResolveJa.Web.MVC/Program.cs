@@ -10,7 +10,7 @@ builder.Services.AddDbContext<ResolveJaDbContext>(options =>
     options.UseSqlServer(connectionString, b => b.MigrationsAssembly("ResolveJa.Web.MVC")));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<IdentityUser>()
     .AddEntityFrameworkStores<ResolveJaDbContext>();
 builder.Services.AddControllersWithViews();
 
