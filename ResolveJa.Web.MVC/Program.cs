@@ -12,7 +12,8 @@ builder.Services.AddDbContext<ResolveJaDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<ResolveJaDbContext>().AddRoles<IdentityRole>();
+//builder.Services.AddDefaultIdentity<IdentityUser>()
+    .AddEntityFrameworkStores<ResolveJaDbContext>().AddRoles<IdentityRole>().AddDefaultUI();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
