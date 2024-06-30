@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ResolveJa.Infrastructure.Data.Persistence;
+using ResolveJa.Web.MVC.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,21 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+    if (!await roleManager.RoleExistsAsync(Roles.Gestor))
+    {
+        await roleManager.CreateAsync(new IdentityRole(Roles.Gestor));
+    }
+    if (!await roleManager.RoleExistsAsync(Roles.Funcionario))
+    {
+        await roleManager.CreateAsync(new IdentityRole(Roles.Funcionario));
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
