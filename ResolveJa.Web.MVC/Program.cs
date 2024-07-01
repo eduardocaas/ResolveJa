@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ResolveJa.Infrastructure.Data.Persistence;
 using ResolveJa.Web.MVC.Common;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<ResolveJaDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ResolveJaDbContext") ?? throw new InvalidOperationException("Connection string 'ResolveJaDbContext' not found.")));
 
 var app = builder.Build();
 
