@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ResolveJa.Application.ViewModels
 {
-    public class EmpresaCreateViewModel
+    public class EmpresaCreateInputModel
     {
         public Empresa Empresa { get; set; }
         [Required]
