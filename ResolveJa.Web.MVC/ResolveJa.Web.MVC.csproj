@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ResolveJa.Application\ResolveJa.Application.csproj" />
     <ProjectReference Include="..\ResolveJa.Infrastructure.Data\ResolveJa.Infrastructure.Data.csproj" />
   </ItemGroup>
 
