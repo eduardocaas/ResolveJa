@@ -64,10 +64,6 @@ namespace ResolveJa.Web.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Empresa, Empresa.Url,Empresa.Nome,Empresa.Cnpj,Empresa.Ramo,Empresa.Descricao,Empresa.DataAdmissao,Empresa.Id, SenhaGestor")] EmpresaCreateInputModel inputModel)
         {
-            IdentityUser user = new IdentityUser();
-            user.Email = (inputModel.Empresa.Url.ToString() + "@email.com");
-            user.
-
             if (ModelState.IsValid)
             {
                 _context.Add(inputModel.Empresa);
