@@ -25,10 +25,10 @@ namespace ResolveJa.Application.MvcServices.Implementations
         {
             IdentityUser identityGestor = new IdentityUser();
 
+            _context.Empresas.Add(model.Empresa);
+            _context.SaveChanges();
 
             Guid guid = Guid.NewGuid();
-
-
             identityGestor.Id = guid.ToString();
             identityGestor.UserName = model.Empresa.Url.ToString();
             identityGestor.Email = (model.Empresa.Url.ToString() + "@email.com");
