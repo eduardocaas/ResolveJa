@@ -59,15 +59,15 @@ namespace ResolveJa.Web.MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Url,Nome,Cnpj,Ramo,Descricao,DataAdmissao,Id")] EmpresaCreateViewModel viewModel)
+        public async Task<IActionResult> Create([Bind("Url,Nome,Cnpj,Ramo,Descricao,DataAdmissao,Id")] EmpresaCreateInputModel inputModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(viewModel.Empresa);
+                _context.Add(inputModel.Empresa);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(viewModel.Empresa);
+            return View(inputModel.Empresa);
         }
 
         // GET: Empresas/Edit/5
