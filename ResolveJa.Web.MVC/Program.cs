@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using ResolveJa.Infrastructure.Data.Persistence;
 using ResolveJa.Web.MVC.Common;
 using Microsoft.Extensions.DependencyInjection;
+using ResolveJa.Application.MvcServices.Interfaces;
+using ResolveJa.Application.MvcServices.Implementations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +25,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ResolveJaDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ResolveJaDbContext") ?? throw new InvalidOperationException("Connection string 'ResolveJaDbContext' not found.")));
+
+builder.Services.AddTransient<IEmpresaMvcService, EmpresaMvcServiceImpl>();
 
 var app = builder.Build();
 
