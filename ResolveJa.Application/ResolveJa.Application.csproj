@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ResolveJa.Core\ResolveJa.Core.csproj" />
+    <ProjectReference Include="..\ResolveJa.Infrastructure.Data\ResolveJa.Infrastructure.Data.csproj" />
   </ItemGroup>
 
 </Project>
