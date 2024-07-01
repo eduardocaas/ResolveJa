@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,10 @@ namespace ResolveJa.Infrastructure.Data.Persistence
     {
         public ResolveJaDbContext CreateDbContext(string[] args)
         {
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(ResolveJa.)
+                
+
             var optionsBuilder = new DbContextOptionsBuilder<ResolveJaDbContext>();
             optionsBuilder.UseSqlServer("Server=localhost,1433;Trusted_Connection=True;TrustServerCertificate=True;Database=ResolveJa_Test;");
 

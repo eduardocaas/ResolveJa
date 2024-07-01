@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ResolveJa.Core\ResolveJa.Core.csproj" />
+    <ProjectReference Include="..\ResolveJa.Web.MVC\ResolveJa.Web.MVC.csproj" />
   </ItemGroup>
 
   
