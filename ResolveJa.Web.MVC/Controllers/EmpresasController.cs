@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using ResolveJa.Application.MvcServices.Interfaces;
 using ResolveJa.Application.ViewModels;
 using ResolveJa.Core.Entities;
 using ResolveJa.Infrastructure.Data.Persistence;
@@ -17,12 +18,17 @@ namespace ResolveJa.Web.MVC.Controllers
     public class EmpresasController : Controller
     {
         private readonly ResolveJaDbContext _context;
+        private readonly IEmpresaMvcService _empresaMvcService;
         public readonly IPasswordHasher<IdentityUser> _passwordHasher;
 
-        public EmpresasController(ResolveJaDbContext context, IPasswordHasher<IdentityUser> passwordHasher)
+        public EmpresasController(
+            ResolveJaDbContext context, 
+            IEmpresaMvcService empresaMvcService,
+            IPasswordHasher<IdentityUser> passwordHasher)
         {
             _context = context;
             _passwordHasher = passwordHasher;
+            _empresaMvcService = empresaMvcService;
         }
 
         // GET: Empresas
@@ -66,8 +72,7 @@ namespace ResolveJa.Web.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(inputModel.Empresa);
-                await _context.SaveChangesAsync();
+                
                 return RedirectToAction(nameof(Index));
             }
             return View(inputModel.Empresa);
