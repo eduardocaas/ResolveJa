@@ -4,5 +4,6 @@
     {
         public const string Gestor = "Gestor";
         public const string Funcionario = "Funcionario";
+        public const string Admin = "Admin";
     }
 }

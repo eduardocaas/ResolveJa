@@ -36,6 +36,10 @@ using (var scope = app.Services.CreateScope())
     {
         await roleManager.CreateAsync(new IdentityRole(Roles.Funcionario));
     }
+    if (!await roleManager.RoleExistsAsync(Roles.Admin))
+    {
+        await roleManager.CreateAsync(new IdentityRole(Roles.Admin));
+    }
 }
 
 // Configure the HTTP request pipeline.
