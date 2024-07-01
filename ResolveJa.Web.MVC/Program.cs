@@ -23,7 +23,7 @@ builder.Services.AddDbContext<ResolveJaDbContext>(options =>
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
+using (var scope = app.Services.CreateScope()) // Persistência de dados default
 {
     var services = scope.ServiceProvider;
 
