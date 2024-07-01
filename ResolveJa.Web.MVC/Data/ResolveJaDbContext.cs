@@ -16,5 +16,7 @@ namespace ResolveJa.Infrastructure.Data.Persistence
         }
 
         public DbSet<ResolveJa.Core.Entities.Funcionario> Funcionario { get; set; } = default!;
+
+        public DbSet<ResolveJa.Core.Entities.Empresa>? Empresa { get; set; }
     }
 }
