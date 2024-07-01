@@ -12,12 +12,12 @@ builder.Services.AddDbContext<ResolveJaDbContext>(options =>
     options.UseSqlServer(connectionString, b => b.MigrationsAssembly("ResolveJa.Web.MVC")));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()  // Adiciona segurança com User e Role
 //builder.Services.AddDefaultIdentity<IdentityUser>()
     .AddEntityFrameworkStores<ResolveJaDbContext>()
     .AddRoles<IdentityRole>()
     .AddDefaultUI()
-    .AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>(TokenOptions.DefaultProvider); ;
+    .AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>(TokenOptions.DefaultProvider); 
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
@@ -30,8 +30,8 @@ using (var scope = app.Services.CreateScope()) // Persistência de dados default
 {
     var services = scope.ServiceProvider;
 
-    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-    if (!await roleManager.RoleExistsAsync(Roles.Gestor))
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>(); 
+    if (!await roleManager.RoleExistsAsync(Roles.Gestor))  // Cria roles no banco, se não existirem
     {
         await roleManager.CreateAsync(new IdentityRole(Roles.Gestor));
     }
@@ -44,9 +44,9 @@ using (var scope = app.Services.CreateScope()) // Persistência de dados default
         await roleManager.CreateAsync(new IdentityRole(Roles.Admin));
     }
 
-    var context = services.GetRequiredService<ResolveJaDbContext>();
+    var context = services.GetRequiredService<ResolveJaDbContext>(); 
 
-    IdentityUser? user = context.Users.FirstOrDefault(u => u.Email == "admin@email.com");
+    IdentityUser? user = context.Users.FirstOrDefault(u => u.Email == "admin@email.com"); // Adiciona usuário com email "admin..." na role Admin
     if (user is not null)
     {
         var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
