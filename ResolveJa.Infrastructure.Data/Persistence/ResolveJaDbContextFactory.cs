@@ -13,11 +13,13 @@ namespace ResolveJa.Infrastructure.Data.Persistence
         public ResolveJaDbContext CreateDbContext(string[] args)
         {
             var configuration = new ConfigurationBuilder()
-                .SetBasePath(ResolveJa.)
+                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                .AddJsonFile("appsettings.json")
+                .Build();
                 
 
             var optionsBuilder = new DbContextOptionsBuilder<ResolveJaDbContext>();
-            optionsBuilder.UseSqlServer("Server=localhost,1433;Trusted_Connection=True;TrustServerCertificate=True;Database=ResolveJa_Test;");
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("LocalConnectionTest"));
 
             return new ResolveJaDbContext(optionsBuilder.Options);
         }
