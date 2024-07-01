@@ -26,7 +26,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-   
+
     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
     if (!await roleManager.RoleExistsAsync(Roles.Gestor))
     {
@@ -40,6 +40,19 @@ using (var scope = app.Services.CreateScope())
     {
         await roleManager.CreateAsync(new IdentityRole(Roles.Admin));
     }
+
+    var context = services.GetRequiredService<ResolveJaDbContext>();
+
+    IdentityUser? user = context.Users.FirstOrDefault(u => u.Email == "admin@email.com");
+    if (user is not null)
+    {
+        var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+        if (!await userManager.IsInRoleAsync(user, Roles.Admin))
+        {
+            await userManager.AddToRoleAsync(user, Roles.Admin);
+        }
+    }
+    
 }
 
 // Configure the HTTP request pipeline.
