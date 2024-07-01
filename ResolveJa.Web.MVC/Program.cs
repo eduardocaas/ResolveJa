@@ -26,7 +26,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ResolveJaDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ResolveJaDbContext") ?? throw new InvalidOperationException("Connection string 'ResolveJaDbContext' not found.")));
 
-builder.Services.AddTransient<IEmpresaMvcService, EmpresaMvcServiceImpl>();
+builder.Services.AddTransient<IEmpresaMvcService, EmpresaMvcServiceImpl>(); // Inversão de dependência
 
 var app = builder.Build();
 
