@@ -14,7 +14,10 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 //builder.Services.AddDefaultIdentity<IdentityUser>()
-    .AddEntityFrameworkStores<ResolveJaDbContext>().AddRoles<IdentityRole>().AddDefaultUI();
+    .AddEntityFrameworkStores<ResolveJaDbContext>()
+    .AddRoles<IdentityRole>()
+    .AddDefaultUI()
+    .AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>(TokenOptions.DefaultProvider); ;
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
