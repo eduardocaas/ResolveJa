@@ -8,11 +8,11 @@ namespace ResolveJa.Core.Entities
 {
     public class Empresa : BaseEntity
     {
-        public string Url { get; private set; }
-        public string Nome { get; private set; }
-        public string Cnpj { get; private set; }
-        public string Ramo { get; private set; }
-        public string Descricao { get; private set; }
-        public DateTime DataAdmissao { get; private set; } = DateTime.Now;
+        public string Url { get; set; }
+        public string Nome { get; set; }
+        public string Cnpj { get; set; }
+        public string Ramo { get; set; }
+        public string Descricao { get; set; }
+        public DateTime DataAdmissao { get; set; } = DateTime.Now;
     }
 }

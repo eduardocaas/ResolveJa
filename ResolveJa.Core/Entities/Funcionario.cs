@@ -8,11 +8,11 @@ namespace ResolveJa.Core.Entities
 {
     public class Funcionario : BaseEntity
     {
-        public string Email { get; private set; }
-        public string Nome { get; private set; }
-        public DateTime DataAdmissao { get; private set; }
+        public string Email { get; set; }
+        public string Nome { get; set; }
+        public DateTime DataAdmissao { get; set; }
 
-        public int IdEmpresa { get; private set; }
-        public Empresa Empresa { get; private set; }
+        public int IdEmpresa { get; set; }
+        public Empresa Empresa { get; set; }
     }
 }
