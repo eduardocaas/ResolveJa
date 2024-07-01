@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using ResolveJa.Application.ViewModels;
 using ResolveJa.Core.Entities;
 using ResolveJa.Infrastructure.Data.Persistence;
 
@@ -58,15 +59,15 @@ namespace ResolveJa.Web.MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Url,Nome,Cnpj,Ramo,Descricao,DataAdmissao,Id")] Empresa empresa)
+        public async Task<IActionResult> Create([Bind("Url,Nome,Cnpj,Ramo,Descricao,DataAdmissao,Id")] EmpresaCreateViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(empresa);
+                _context.Add(viewModel.Empresa);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(empresa);
+            return View(viewModel.Empresa);
         }
 
         // GET: Empresas/Edit/5
