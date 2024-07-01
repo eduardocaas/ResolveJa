@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -16,10 +17,12 @@ namespace ResolveJa.Web.MVC.Controllers
     public class EmpresasController : Controller
     {
         private readonly ResolveJaDbContext _context;
+        public readonly IPasswordHasher<IdentityUser> _passwordHasher;
 
-        public EmpresasController(ResolveJaDbContext context)
+        public EmpresasController(ResolveJaDbContext context, IPasswordHasher<IdentityUser> passwordHasher)
         {
             _context = context;
+            _passwordHasher = passwordHasher;
         }
 
         // GET: Empresas
@@ -61,6 +64,10 @@ namespace ResolveJa.Web.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Empresa, Empresa.Url,Empresa.Nome,Empresa.Cnpj,Empresa.Ramo,Empresa.Descricao,Empresa.DataAdmissao,Empresa.Id, SenhaGestor")] EmpresaCreateInputModel inputModel)
         {
+            IdentityUser user = new IdentityUser();
+            user.Email = (inputModel.Empresa.Url.ToString() + "@email.com");
+            user.
+
             if (ModelState.IsValid)
             {
                 _context.Add(inputModel.Empresa);
