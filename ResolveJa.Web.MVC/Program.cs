@@ -5,16 +5,22 @@ using ResolveJa.Web.MVC.Common;
 using Microsoft.Extensions.DependencyInjection;
 using ResolveJa.Application.MvcServices.Interfaces;
 using ResolveJa.Application.MvcServices.Implementations;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Injeção de dependência
+builder.Services.AddTransient<IEmpresaMvcService, EmpresaMvcServiceImpl>();
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("LocalConnectionTest");
 builder.Services.AddDbContext<ResolveJaDbContext>(options =>
-    options.UseSqlServer(connectionString, b => b.MigrationsAssembly("ResolveJa.Web.MVC")));
+    options.UseSqlServer(connectionString, b => b.MigrationsAssembly("ResolveJa.Web.MVC")), ServiceLifetime.Singleton);
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()  // Adiciona segurança com User e Role
+
+// Adiciona segurança com User e Role
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()  
 //builder.Services.AddDefaultIdentity<IdentityUser>()
     .AddEntityFrameworkStores<ResolveJaDbContext>()
     .AddRoles<IdentityRole>()
@@ -26,7 +32,6 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ResolveJaDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ResolveJaDbContext") ?? throw new InvalidOperationException("Connection string 'ResolveJaDbContext' not found.")));
 
-builder.Services.AddTransient<IEmpresaMvcService, EmpresaMvcServiceImpl>(); // Inversão de dependência
 
 var app = builder.Build();
 
