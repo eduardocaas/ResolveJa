@@ -20,6 +20,9 @@ namespace ResolveJa.Infrastructure.Data.Persistence
         public DbSet<Empresa> Empresas { get; set; }
         public DbSet<Funcionario> Funcionarios { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<Empresa> Empresa { get; set; }
+        public DbSet<Funcionario> Funcionario { get; set; }
+        public DbSet<Ticket> Ticket { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
