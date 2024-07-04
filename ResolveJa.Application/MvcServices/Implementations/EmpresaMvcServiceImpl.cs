@@ -27,19 +27,22 @@ namespace ResolveJa.Application.MvcServices.Implementations
 
         public void CreateEmpresa(EmpresaCreateInputModel model)
         {
-            IdentityUser identityGestor = new IdentityUser();
-
             _context.Empresas.Add(model.Empresa);
             _context.SaveChanges();
 
-            
+            CreateIdentityUserAndRole(model);
+        }
+
+        public void CreateIdentityUserAndRole(EmpresaCreateInputModel model)
+        {
+            IdentityUser identityGestor = new IdentityUser();
 
             Guid guid = Guid.NewGuid();
             identityGestor.Id = guid.ToString();
             identityGestor.UserName = model.Empresa.Url.ToString();
             identityGestor.Email = (model.Empresa.Url.ToString() + "@email.com");
             identityGestor.NormalizedUserName = (model.Empresa.Url.ToString() + "@email.com");
-           
+
             _context.Users.Add(identityGestor);
 
             var hashedPassword = _passwordHasher.HashPassword(identityGestor, model.SenhaGestor);

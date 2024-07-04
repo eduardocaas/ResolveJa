@@ -10,5 +10,6 @@ namespace ResolveJa.Application.MvcServices.Interfaces
     public interface IEmpresaMvcService
     {
         void CreateEmpresa(EmpresaCreateInputModel model);
+        void CreateIdentityUserAndRole(EmpresaCreateInputModel model);
     }
 }
