@@ -16,19 +16,13 @@ namespace ResolveJa.Application.MvcServices.Implementations
     {
         private readonly ResolveJaDbContext _context;
         private readonly UserMvcServiceImpl _userMvcService;
-        private readonly IPasswordHasher<IdentityUser> _passwordHasher;
-        private readonly IServiceProvider _services;
 
         public EmpresaMvcServiceImpl(
             ResolveJaDbContext context, 
-            UserMvcServiceImpl userMvcService,
-            IPasswordHasher<IdentityUser> passwordHasher, 
-            IServiceProvider services)
+            UserMvcServiceImpl userMvcService)
         {
             _context = context;
             _userMvcService = userMvcService;
-            _passwordHasher = passwordHasher;
-            _services = services;
         }
         
         public void CreateEmpresa(EmpresaCreateInputModel model) // Realiza persistência da Empresa e cria usuário padrão

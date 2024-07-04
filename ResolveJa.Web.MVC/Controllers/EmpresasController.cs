@@ -19,15 +19,12 @@ namespace ResolveJa.Web.MVC.Controllers
     {
         private readonly ResolveJaDbContext _context;
         private readonly IEmpresaMvcService _empresaMvcService;
-        public readonly IPasswordHasher<IdentityUser> _passwordHasher;
 
         public EmpresasController(
             ResolveJaDbContext context, 
-            IEmpresaMvcService empresaMvcService,
-            IPasswordHasher<IdentityUser> passwordHasher)
+            IEmpresaMvcService empresaMvcService)
         {
             _context = context;
-            _passwordHasher = passwordHasher;
             _empresaMvcService = empresaMvcService;
         }
 
