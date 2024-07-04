@@ -25,7 +25,7 @@ namespace ResolveJa.Application.MvcServices.Implementations
             _services = services;
         }
 
-        public void CreateEmpresa(EmpresaCreateInputModel model)
+        public void CreateEmpresa(EmpresaCreateInputModel model) // Realiza persistência da Empresa e cria usuário padrão
         {
             _context.Empresas.Add(model.Empresa);
             _context.SaveChanges();
@@ -33,7 +33,7 @@ namespace ResolveJa.Application.MvcServices.Implementations
             CreateIdentityUserAndRole(model);
         }
 
-        public void CreateIdentityUserAndRole(EmpresaCreateInputModel model)
+        public void CreateIdentityUserAndRole(EmpresaCreateInputModel model) // Cria usuário Identity para empresa e aloca na Role Gestor
         {
             IdentityUser identityGestor = new IdentityUser();
 
