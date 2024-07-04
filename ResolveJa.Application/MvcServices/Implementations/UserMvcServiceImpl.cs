@@ -7,12 +7,17 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ResolveJa.Application.MvcServices.Interfaces;
 using ResolveJa.Application.ViewModels;
+using ResolveJa.Infrastructure.Data.Persistence;
 using ResolveJa.Web.MVC.Common;
 
 namespace ResolveJa.Application.MvcServices.Implementations
 {
     public class UserMvcServiceImpl : IUserMvcService
     {
+        private readonly ResolveJaDbContext _context;
+        public readonly IPasswordHasher<IdentityUser> _passwordHasher;
+        private readonly IServiceProvider _services;
+
         public void CreateGestorUser(EmpresaCreateInputModel model)
         {
             IdentityUser identityGestor = new IdentityUser();
