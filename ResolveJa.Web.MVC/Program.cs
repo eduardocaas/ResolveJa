@@ -11,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Injeção de dependência
 builder.Services.AddTransient<IEmpresaMvcService, EmpresaMvcServiceImpl>();
+builder.Services.AddTransient<IUserMvcService, UserMvcServiceImpl>();
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("LocalConnectionTest");
