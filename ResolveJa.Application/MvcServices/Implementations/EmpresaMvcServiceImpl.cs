@@ -1,15 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
-using ResolveJa.Application.MvcServices.Interfaces;
+﻿using ResolveJa.Application.MvcServices.Interfaces;
 using ResolveJa.Application.ViewModels;
 using ResolveJa.Infrastructure.Data.Persistence;
-using ResolveJa.Web.MVC.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace ResolveJa.Application.MvcServices.Implementations
 {
     public class EmpresaMvcServiceImpl : IEmpresaMvcService

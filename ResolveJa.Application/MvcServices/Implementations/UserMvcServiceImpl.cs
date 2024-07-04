@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using ResolveJa.Application.MvcServices.Interfaces;
 using ResolveJa.Application.ViewModels;
@@ -16,10 +10,10 @@ namespace ResolveJa.Application.MvcServices.Implementations
     public class UserMvcServiceImpl : IUserMvcService
     {
         private readonly ResolveJaDbContext _context;
-        public readonly IPasswordHasher<IdentityUser> _passwordHasher;
+        private readonly IPasswordHasher<IdentityUser> _passwordHasher;
         private readonly IServiceProvider _services;
 
-
+        
         public UserMvcServiceImpl(
             ResolveJaDbContext context, 
             IPasswordHasher<IdentityUser> passwordHasher,
