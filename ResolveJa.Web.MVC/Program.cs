@@ -16,7 +16,7 @@ builder.Services.AddTransient<IUserMvcService, UserMvcServiceImpl>();
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("LocalConnectionTest");
 builder.Services.AddDbContext<ResolveJaDbContext>(options =>
-    options.UseSqlServer(connectionString, b => b.MigrationsAssembly("ResolveJa.Web.MVC")), ServiceLifetime.Singleton);
+    options.UseSqlServer(connectionString, b => b.MigrationsAssembly("ResolveJa.Infrastructure.Data")), ServiceLifetime.Singleton);
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 
