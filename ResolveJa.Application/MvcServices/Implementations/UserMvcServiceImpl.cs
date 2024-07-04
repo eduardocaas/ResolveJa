@@ -18,6 +18,17 @@ namespace ResolveJa.Application.MvcServices.Implementations
         public readonly IPasswordHasher<IdentityUser> _passwordHasher;
         private readonly IServiceProvider _services;
 
+
+        public UserMvcServiceImpl(
+            ResolveJaDbContext context, 
+            IPasswordHasher<IdentityUser> passwordHasher,
+            IServiceProvider services)
+        {
+            _context = context;
+            _passwordHasher = passwordHasher;
+            _services = services;
+        }
+
         public void CreateGestorUser(EmpresaCreateInputModel model)
         {
             IdentityUser identityGestor = new IdentityUser();
