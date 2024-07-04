@@ -9,6 +9,6 @@ namespace ResolveJa.Application.MvcServices.Interfaces
 {
     public interface IUserMvcService
     {
-        void CreateGestorIdentityUser(EmpresaCreateInputModel model);
+        void CreateGestorUser(EmpresaCreateInputModel model);
     }
 }
