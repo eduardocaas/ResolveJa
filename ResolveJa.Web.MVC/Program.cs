@@ -22,7 +22,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 
 // Adiciona segurança com User e Role
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()  
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)  
 //builder.Services.AddDefaultIdentity<IdentityUser>()
     .AddEntityFrameworkStores<ResolveJaDbContext>()
     .AddRoles<IdentityRole>()
