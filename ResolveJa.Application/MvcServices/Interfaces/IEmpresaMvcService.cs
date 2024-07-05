@@ -9,6 +9,6 @@ namespace ResolveJa.Application.MvcServices.Interfaces
 {
     public interface IEmpresaMvcService
     {
-        void CreateEmpresa(EmpresaCreateInputModel model);
+        Task CreateEmpresa(EmpresaCreateInputModel model);
     }
 }

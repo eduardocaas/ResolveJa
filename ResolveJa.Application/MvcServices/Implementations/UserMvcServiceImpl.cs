@@ -24,26 +24,26 @@ namespace ResolveJa.Application.MvcServices.Implementations
             _services = services;
         }
 
-        public void CreateGestor(EmpresaCreateInputModel model) // Cria usuário Identity para empresa e aloca na Role Gestor
+        public async Task CreateGestor(EmpresaCreateInputModel model) // Cria usuário Identity para empresa e aloca na Role Gestor
         {
             IdentityUser identityGestor = new IdentityUser();
 
             Guid guid = Guid.NewGuid();
             identityGestor.Id = guid.ToString();
-            identityGestor.UserName = model.Empresa.Url.ToString();
+            identityGestor.UserName = model.Empresa.Url.ToString() + "@email.com";
             identityGestor.Email = (model.Empresa.Url.ToString() + "@email.com");
-            identityGestor.NormalizedUserName = (model.Empresa.Url.ToString() + "@email.com");
+            //identityGestor.NormalizedUserName = (model.Empresa.Url.ToString() + "@email.com");
 
-            _context.Users.Add(identityGestor);
+            await _context.Users.AddAsync(identityGestor);
 
             var hashedPassword = _passwordHasher.HashPassword(identityGestor, model.SenhaGestor);
             identityGestor.SecurityStamp = Guid.NewGuid().ToString();
             identityGestor.PasswordHash = hashedPassword;
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             var userManager = _services.GetRequiredService<UserManager<IdentityUser>>();
-            userManager.AddToRoleAsync(identityGestor, Roles.Gestor);
+            await userManager.AddToRoleAsync(identityGestor, Roles.Gestor);
         }
     }
 }

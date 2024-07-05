@@ -19,13 +19,13 @@ namespace ResolveJa.Application.MvcServices.Implementations
             _funcionarioMvcService = funcionarioMvcService;
         }
         
-        public void CreateEmpresa(EmpresaCreateInputModel model) // Realiza persistência da Empresa e cria usuário padrão
+        public async Task CreateEmpresa(EmpresaCreateInputModel model) // Realiza persistência da Empresa e cria usuário padrão
         {
             _context.Empresas.Add(model.Empresa);
             _context.SaveChanges();
 
-            _userMvcService.CreateGestor(model);
-            _funcionarioMvcService.CreateGestor(model);
+            await _userMvcService.CreateGestor(model);
+            await _funcionarioMvcService.CreateGestor(model);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace ResolveJa.Application.MvcServices.Implementations
             _context = context;
         }
 
-        public void CreateGestor(EmpresaCreateInputModel model)
+        public async Task CreateGestor(EmpresaCreateInputModel model)
         {
             Funcionario funcionario = new Funcionario();
             Empresa? empresa = _context.Empresa.FirstOrDefault(e => e.Url == model.Empresa.Url.ToString());
@@ -30,7 +30,7 @@ namespace ResolveJa.Application.MvcServices.Implementations
             funcionario.IdEmpresa = empresa.Id;
 
             _context.Funcionario.Add(funcionario);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
     }
 }
