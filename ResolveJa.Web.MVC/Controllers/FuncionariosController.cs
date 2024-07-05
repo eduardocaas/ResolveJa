@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using ResolveJa.Application.MvcServices.Interfaces;
 using ResolveJa.Core.Entities;
 using ResolveJa.Infrastructure.Data.Persistence;
 
@@ -15,10 +16,14 @@ namespace ResolveJa.Web.MVC.Controllers
     public class FuncionariosController : Controller
     {
         private readonly ResolveJaDbContext _context;
+        private readonly IFuncionarioMvcService _funcionarioMvcService;
 
-        public FuncionariosController(ResolveJaDbContext context)
+        public FuncionariosController(
+            ResolveJaDbContext context,
+            IFuncionarioMvcService funcionarioMvcService)
         {
             _context = context;
+            _funcionarioMvcService = funcionarioMvcService;
         }
 
         // GET: Funcionarios
