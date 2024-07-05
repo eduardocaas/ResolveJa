@@ -29,8 +29,8 @@ namespace ResolveJa.Web.MVC.Controllers
         // GET: Funcionarios
         public async Task<IActionResult> Index()
         {
-            var email = User.Identity.Name;
-            return View(await _funcionarioMvcService.GetAll(email));
+            var emailGestor = User.Identity.Name;
+            return View(await _funcionarioMvcService.GetAll(emailGestor));
         }
 
         // GET: Funcionarios/Details/5
@@ -64,10 +64,12 @@ namespace ResolveJa.Web.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Email,Nome,DataAdmissao,IdEmpresa,Id")] Funcionario funcionario)
         {
+            var emailGestor = User.Identity.Name;
+            funcionario = _funcionarioMvcService.ValidFuncionario(funcionario, emailGestor);
+
             if (ModelState.IsValid)
             {
-                _context.Add(funcionario);
-                await _context.SaveChangesAsync();
+                await _funcionarioMvcService.CreateFuncionario(funcionario);
                 return RedirectToAction(nameof(Index));
             }
             return View(funcionario);
