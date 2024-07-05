@@ -21,7 +21,7 @@ namespace ResolveJa.Application.MvcServices.Implementations
             _context.Empresas.Add(model.Empresa);
             _context.SaveChanges();
 
-            _userMvcService.CreateGestorUser(model);
+            _userMvcService.CreateGestor(model);
         }
     }
 }

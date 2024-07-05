@@ -9,6 +9,6 @@ namespace ResolveJa.Application.MvcServices.Interfaces
 {
     public interface IFuncionarioMvcService
     {
-        void CreateFuncionarioGestor(EmpresaCreateInputModel model);
+        void CreateGestor(EmpresaCreateInputModel model);
     }
 }

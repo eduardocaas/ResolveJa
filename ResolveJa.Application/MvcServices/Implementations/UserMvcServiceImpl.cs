@@ -24,7 +24,7 @@ namespace ResolveJa.Application.MvcServices.Implementations
             _services = services;
         }
 
-        public void CreateGestorUser(EmpresaCreateInputModel model) // Cria usuário Identity para empresa e aloca na Role Gestor
+        public void CreateGestor(EmpresaCreateInputModel model) // Cria usuário Identity para empresa e aloca na Role Gestor
         {
             IdentityUser identityGestor = new IdentityUser();
 
