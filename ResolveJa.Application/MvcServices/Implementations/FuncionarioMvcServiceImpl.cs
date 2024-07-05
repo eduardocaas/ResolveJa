@@ -32,5 +32,10 @@ namespace ResolveJa.Application.MvcServices.Implementations
             _context.Funcionario.Add(funcionario);
             await _context.SaveChangesAsync();
         }
+
+        public Task<List<Funcionario>> GetAll(string email)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
