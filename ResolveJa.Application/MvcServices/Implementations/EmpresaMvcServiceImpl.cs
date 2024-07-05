@@ -7,13 +7,16 @@ namespace ResolveJa.Application.MvcServices.Implementations
     {
         private readonly ResolveJaDbContext _context;
         private readonly IUserMvcService _userMvcService;
+        private readonly IFuncionarioMvcService _funcionarioMvcService;
 
         public EmpresaMvcServiceImpl(
-            ResolveJaDbContext context, 
-            IUserMvcService userMvcService)
+            ResolveJaDbContext context,
+            IUserMvcService userMvcService,
+            IFuncionarioMvcService funcionarioMvcService)
         {
             _context = context;
             _userMvcService = userMvcService;
+            _funcionarioMvcService = funcionarioMvcService;
         }
         
         public void CreateEmpresa(EmpresaCreateInputModel model) // Realiza persistência da Empresa e cria usuário padrão
@@ -22,6 +25,7 @@ namespace ResolveJa.Application.MvcServices.Implementations
             _context.SaveChanges();
 
             _userMvcService.CreateGestor(model);
+            _funcionarioMvcService.CreateGestor(model);
         }
     }
 }
