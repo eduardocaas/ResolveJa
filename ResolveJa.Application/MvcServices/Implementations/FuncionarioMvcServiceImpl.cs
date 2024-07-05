@@ -20,9 +20,16 @@ namespace ResolveJa.Application.MvcServices.Implementations
             _context = context;
         }
 
-        public Task CreateFuncionario(Funcionario funcionario, string emailGestor)
+        public async Task CreateFuncionario(Funcionario funcionario, string emailGestor)
         {
-            throw new NotImplementedException();
+            var idEmpresa = _context.Funcionario
+                .Where(f => f.Email == emailGestor)
+                .Select(f => f.IdEmpresa)
+                .SingleOrDefault();
+
+            funcionario.IdEmpresa = idEmpresa;
+
+            await _context.Funcionario.AddAsync(funcionario);
         }
 
         public async Task CreateGestor(EmpresaCreateInputModel model)
