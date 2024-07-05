@@ -29,9 +29,8 @@ namespace ResolveJa.Web.MVC.Controllers
         // GET: Funcionarios
         public async Task<IActionResult> Index()
         {
-              return _context.Funcionario != null ? 
-                          View(await _context.Funcionario.ToListAsync()) :
-                          Problem("Entity set 'ResolveJaDbContext.Funcionario'  is null.");
+            var email = User.Identity.Name;
+            return View(await _funcionarioMvcService.GetAll(email));
         }
 
         // GET: Funcionarios/Details/5
