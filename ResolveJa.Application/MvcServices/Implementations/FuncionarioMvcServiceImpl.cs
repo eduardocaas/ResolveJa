@@ -34,10 +34,8 @@ namespace ResolveJa.Application.MvcServices.Implementations
             return funcionario;
         }
 
-        public async Task CreateFuncionario(Funcionario funcionario, string emailGestor)
+        public async Task CreateFuncionario(Funcionario funcionario)
         {
-            
-
             await _context.Funcionario.AddAsync(funcionario);
             await _context.SaveChangesAsync();
         }
