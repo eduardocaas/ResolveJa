@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using ResolveJa.Application.MvcServices.Interfaces;
 using ResolveJa.Application.ViewModels;
 using ResolveJa.Core.Entities;
@@ -35,7 +36,17 @@ namespace ResolveJa.Application.MvcServices.Implementations
 
         public Task<List<Funcionario>> GetAll(string email)
         {
-            throw new NotImplementedException();
+            var idEmpresa = _context.Funcionario
+                .Where(f => f.Email == email)
+                .Select(f => f.IdEmpresa)
+                .SingleOrDefault();
+
+            var funcionarios = _context.Funcionario
+                .AsNoTracking()
+                .Where(f => f.IdEmpresa == idEmpresa)
+                .ToListAsync();
+
+            return funcionarios;
         }
     }
 }
