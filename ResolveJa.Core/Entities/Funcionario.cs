@@ -10,7 +10,7 @@ namespace ResolveJa.Core.Entities
     {
         public string Email { get; set; }
         public string Nome { get; set; }
-        public DateTime DataAdmissao { get; set; }
+        public DateTime DataAdmissao { get; set; } = DateTime.Now;
 
         public int IdEmpresa { get; set; }
         public Empresa Empresa { get; set; }
