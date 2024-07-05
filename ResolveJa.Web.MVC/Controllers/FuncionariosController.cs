@@ -67,6 +67,9 @@ namespace ResolveJa.Web.MVC.Controllers
             var emailGestor = User.Identity.Name;
             funcionario = _funcionarioMvcService.ValidFuncionario(funcionario, emailGestor);
 
+            ModelState.Remove("Empresa");
+            ModelState.Remove("IdEmpresa");
+
             if (ModelState.IsValid)
             {
                 await _funcionarioMvcService.CreateFuncionario(funcionario);
