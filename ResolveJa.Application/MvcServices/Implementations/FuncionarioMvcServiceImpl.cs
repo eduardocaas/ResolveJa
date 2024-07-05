@@ -34,10 +34,10 @@ namespace ResolveJa.Application.MvcServices.Implementations
             await _context.SaveChangesAsync();
         }
 
-        public Task<List<Funcionario>> GetAll(string email)
+        public Task<List<Funcionario>> GetAll(string emailGestor)
         {
             var idEmpresa = _context.Funcionario
-                .Where(f => f.Email == email)
+                .Where(f => f.Email == emailGestor)
                 .Select(f => f.IdEmpresa)
                 .SingleOrDefault();
 

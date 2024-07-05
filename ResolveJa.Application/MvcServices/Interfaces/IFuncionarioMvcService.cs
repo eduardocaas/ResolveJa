@@ -11,7 +11,7 @@ namespace ResolveJa.Application.MvcServices.Interfaces
     public interface IFuncionarioMvcService
     {
         Task CreateGestor(EmpresaCreateInputModel model);
-        Task<List<Funcionario>> GetAll(string email);
+        Task<List<Funcionario>> GetAll(string emailGestor);
         Task CreateFuncionario(Funcionario funcionario, string emailGestor);
     }
 }
