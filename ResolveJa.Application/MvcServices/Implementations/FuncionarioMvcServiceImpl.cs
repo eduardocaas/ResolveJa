@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ResolveJa.Application.MvcServices.Interfaces;
 using ResolveJa.Application.ViewModels;
+using ResolveJa.Core.Entities;
 using ResolveJa.Infrastructure.Data.Persistence;
 
 namespace ResolveJa.Application.MvcServices.Implementations
@@ -20,7 +21,16 @@ namespace ResolveJa.Application.MvcServices.Implementations
 
         public void CreateGestor(EmpresaCreateInputModel model)
         {
-            throw new NotImplementedException();
+            Funcionario funcionario = new Funcionario();
+            Empresa? empresa = _context.Empresa.FirstOrDefault(e => e.Url == model.Empresa.Url.ToString());
+
+            funcionario.Nome = model.Empresa.Url.ToString();
+            funcionario.Email = (model.Empresa.Url.ToString() + "@email.com");
+            funcionario.Empresa = empresa;
+            funcionario.IdEmpresa = empresa.Id;
+
+            _context.Funcionario.Add(funcionario);
+            _context.SaveChanges();
         }
     }
 }
