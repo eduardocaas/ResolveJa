@@ -69,7 +69,7 @@ namespace ResolveJa.Web.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                _empresaMvcService.CreateEmpresa(inputModel);
+                await _empresaMvcService.CreateEmpresa(inputModel);
                 return RedirectToAction(nameof(Index));
             }
             return View(inputModel.Empresa);
