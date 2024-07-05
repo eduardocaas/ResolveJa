@@ -20,6 +20,11 @@ namespace ResolveJa.Application.MvcServices.Implementations
             _context = context;
         }
 
+        public Task CreateFuncionario(Funcionario funcionario, string emailGestor)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task CreateGestor(EmpresaCreateInputModel model)
         {
             Funcionario funcionario = new Funcionario();
