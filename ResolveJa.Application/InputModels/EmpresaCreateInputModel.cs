@@ -13,6 +13,7 @@ namespace ResolveJa.Application.ViewModels
         public Empresa Empresa { get; set; }
         [Required]
         [MinLength(6, ErrorMessage = "A senha deve ter no mínimo 6 caracteres")]
+        [Display(Name = "Senha Gestor")]
         public string SenhaGestor { get; set; }
     }
 }
