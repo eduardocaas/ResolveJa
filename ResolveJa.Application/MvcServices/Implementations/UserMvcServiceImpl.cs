@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using ResolveJa.Application.InputModels;
 using ResolveJa.Application.MvcServices.Interfaces;
 using ResolveJa.Application.ViewModels;
 using ResolveJa.Infrastructure.Data.Persistence;
@@ -44,6 +45,11 @@ namespace ResolveJa.Application.MvcServices.Implementations
 
             var userManager = _services.GetRequiredService<UserManager<IdentityUser>>();
             await userManager.AddToRoleAsync(identityGestor, Roles.Gestor);
+        }
+
+        public Task CreateFuncionario(FuncionarioCreateInputModel model)
+        {
+            throw new NotImplementedException();
         }
     }
 }
