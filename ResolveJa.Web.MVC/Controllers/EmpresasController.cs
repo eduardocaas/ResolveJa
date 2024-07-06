@@ -72,7 +72,7 @@ namespace ResolveJa.Web.MVC.Controllers
                 await _empresaMvcService.CreateEmpresa(inputModel);
                 return RedirectToAction(nameof(Index));
             }
-            return View(inputModel.Empresa);
+            return View(inputModel);
         }
 
         // GET: Empresas/Edit/5

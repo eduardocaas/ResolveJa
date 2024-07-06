@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using ResolveJa.Application.InputModels;
 using ResolveJa.Application.MvcServices.Interfaces;
 using ResolveJa.Core.Entities;
 using ResolveJa.Infrastructure.Data.Persistence;
@@ -62,20 +63,20 @@ namespace ResolveJa.Web.MVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Email,Nome,DataAdmissao,IdEmpresa,Id")] Funcionario funcionario)
+        public async Task<IActionResult> Create([Bind("Funcionario,Funcionario.Email,Funcionario.Nome,Funcionario.DataAdmissao,Funcionario.IdEmpresa,Funcionario.Id, SenhaFuncionario")] FuncionarioCreateInputModel inputModel)
         {
             var emailGestor = User.Identity.Name;
-            funcionario = _funcionarioMvcService.ValidFuncionario(funcionario, emailGestor);
+            inputModel.Funcionario = _funcionarioMvcService.ValidFuncionario(inputModel.Funcionario, emailGestor);
 
             ModelState.Remove("Empresa");
             ModelState.Remove("IdEmpresa");
 
             if (ModelState.IsValid)
             {
-                await _funcionarioMvcService.CreateFuncionario(funcionario);
+                await _funcionarioMvcService.CreateFuncionario(inputModel.Funcionario);
                 return RedirectToAction(nameof(Index));
             }
-            return View(funcionario);
+            return View(inputModel);
         }
 
         // GET: Funcionarios/Edit/5
