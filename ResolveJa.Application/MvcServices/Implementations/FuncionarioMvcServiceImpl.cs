@@ -82,7 +82,10 @@ namespace ResolveJa.Application.MvcServices.Implementations
 
             foreach (var fun in funcionarios)
             {
-                _context.Users.Remove(_context.Users.Where(u => u.Email == fun.Email).First());
+                IdentityUser? user = _context.Users.Where(u => u.Email == fun.Email).FirstOrDefault();
+                if (user != null)        
+                    _context.Users.Remove(user);
+                               
                 _context.Funcionario.Remove(fun);
             }                            
         }
