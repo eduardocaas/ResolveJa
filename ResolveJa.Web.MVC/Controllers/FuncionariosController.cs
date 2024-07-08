@@ -13,7 +13,7 @@ using ResolveJa.Infrastructure.Data.Persistence;
 
 namespace ResolveJa.Web.MVC.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Gestor")]
     public class FuncionariosController : Controller
     {
         private readonly ResolveJaDbContext _context;
