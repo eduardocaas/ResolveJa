@@ -51,7 +51,7 @@ namespace ResolveJa.Application.MvcServices.Implementations
         {
             IdentityUser identityFuncionario = new IdentityUser();
 
-            Guid guid = new Guid();
+            Guid guid = Guid.NewGuid();
             identityFuncionario.Id = guid.ToString();
             identityFuncionario.UserName = model.Funcionario.Email;
             identityFuncionario.Email = model.Funcionario.Email;
