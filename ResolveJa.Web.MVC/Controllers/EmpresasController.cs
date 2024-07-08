@@ -156,7 +156,7 @@ namespace ResolveJa.Web.MVC.Controllers
             var empresa = await _context.Empresa.FindAsync(id);
             if (empresa != null)
             {
-                _context.Empresa.Remove(empresa);
+                await _empresaMvcService.DeleteEmpresa(id);
             }
             
             await _context.SaveChangesAsync();
