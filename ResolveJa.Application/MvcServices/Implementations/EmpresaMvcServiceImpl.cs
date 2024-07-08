@@ -31,6 +31,9 @@ namespace ResolveJa.Application.MvcServices.Implementations
 
         public async Task DeleteEmpresa(int id)
         {
+            var empresa = _context.Empresa.FirstOrDefault(x => x.Id == id);
+            _context.Empresa.Remove(empresa);
+
             string? url = _context.Empresa.Select(e => e.Url).FirstOrDefault();
             IdentityUser user = (IdentityUser) _context.Users.Where(u => u.Email.StartsWith(url));
             _context.Users.Remove(user);
