@@ -1,4 +1,5 @@
-﻿using ResolveJa.Application.MvcServices.Interfaces;
+﻿using Microsoft.AspNetCore.Identity;
+using ResolveJa.Application.MvcServices.Interfaces;
 using ResolveJa.Application.ViewModels;
 using ResolveJa.Infrastructure.Data.Persistence;
 namespace ResolveJa.Application.MvcServices.Implementations
@@ -26,6 +27,13 @@ namespace ResolveJa.Application.MvcServices.Implementations
 
             await _userMvcService.CreateGestor(model);
             await _funcionarioMvcService.CreateGestor(model);
+        }
+
+        public async Task DeleteEmpresa(int id)
+        {
+            string? url = _context.Empresa.Select(e => e.Url).FirstOrDefault();
+            IdentityUser user = (IdentityUser) _context.Users.Where(u => u.Email.StartsWith(url));
+            _context.Users.Remove(user);
         }
     }
 }
