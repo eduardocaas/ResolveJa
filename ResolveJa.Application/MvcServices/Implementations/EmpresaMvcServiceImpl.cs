@@ -35,13 +35,15 @@ namespace ResolveJa.Application.MvcServices.Implementations
             _funcionarioMvcService.DeleteFuncionarioEmpresa(id);
 
             var empresa = _context.Empresa.FirstOrDefault(x => x.Id == id);
-            _context.Empresa.Remove(empresa);
+            if (empresa != null) 
+                _context.Empresa.Remove(empresa);
 
             string? url = _context.Empresa.Select(e => e.Url).FirstOrDefault();
             var likeExpression = url+"%";
 
             IdentityUser? user = _context.Users.Where(u => EF.Functions.Like(u.Email, likeExpression)).FirstOrDefault();
-            _context.Users.Remove(user);
+            if (user != null)
+                _context.Users.Remove(user);
         }
     }
 }
