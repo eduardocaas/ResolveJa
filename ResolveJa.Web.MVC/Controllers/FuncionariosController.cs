@@ -73,7 +73,7 @@ namespace ResolveJa.Web.MVC.Controllers
 
             if (ModelState.IsValid)
             {
-                await _funcionarioMvcService.CreateFuncionario(inputModel.Funcionario);
+                await _funcionarioMvcService.CreateFuncionario(inputModel);
                 return RedirectToAction(nameof(Index));
             }
             return View(inputModel);
