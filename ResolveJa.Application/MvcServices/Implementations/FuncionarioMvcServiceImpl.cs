@@ -74,5 +74,10 @@ namespace ResolveJa.Application.MvcServices.Implementations
 
             return funcionarios;
         }
+
+        public Task DeleteFuncionarioEmpresa(int idEmpresa)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
