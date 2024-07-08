@@ -68,12 +68,12 @@ namespace ResolveJa.Web.MVC.Controllers
             var emailGestor = User.Identity.Name;
             inputModel.Funcionario = _funcionarioMvcService.ValidFuncionario(inputModel.Funcionario, emailGestor);
 
-            ModelState.Remove("Empresa");
-            ModelState.Remove("IdEmpresa");
+            ModelState.Remove("Funcionario.Empresa");
+            ModelState.Remove("Funcionario.IdEmpresa");
 
             if (ModelState.IsValid)
             {
-                await _funcionarioMvcService.CreateFuncionario(inputModel);
+                await _funcionarioMvcService.CreateFuncionario(inputModel.Funcionario, inputModel);
                 return RedirectToAction(nameof(Index));
             }
             return View(inputModel);

@@ -39,9 +39,9 @@ namespace ResolveJa.Application.MvcServices.Implementations
             return funcionario;
         }
 
-        public async Task CreateFuncionario(FuncionarioCreateInputModel inputModel)
+        public async Task CreateFuncionario(Funcionario funcionario, FuncionarioCreateInputModel inputModel)
         {
-            await _context.Funcionario.AddAsync(inputModel.Funcionario);
+            await _context.Funcionario.AddAsync(funcionario);
             await _context.SaveChangesAsync();
             await _userMvcService.CreateFuncionario(inputModel);
         }

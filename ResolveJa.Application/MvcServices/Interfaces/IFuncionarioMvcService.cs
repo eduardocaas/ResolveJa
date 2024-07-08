@@ -13,7 +13,7 @@ namespace ResolveJa.Application.MvcServices.Interfaces
     {
         Task CreateGestor(EmpresaCreateInputModel model);
         Task<List<Funcionario>> GetAll(string emailGestor);
-        Task CreateFuncionario(FuncionarioCreateInputModel inputModel);
+        Task CreateFuncionario(Funcionario funcionario, FuncionarioCreateInputModel inputModel);
         Funcionario ValidFuncionario(Funcionario funcionario, string emailGestor);
     }
 }
