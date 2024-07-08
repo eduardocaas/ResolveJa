@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ResolveJa.Application.InputModels;
 using ResolveJa.Application.MvcServices.Interfaces;
@@ -75,9 +76,15 @@ namespace ResolveJa.Application.MvcServices.Implementations
             return funcionarios;
         }
 
-        public Task DeleteFuncionarioEmpresa(int idEmpresa)
+        public void DeleteFuncionarioEmpresa(int idEmpresa)
         {
-            throw new NotImplementedException();
+            var funcionarios = _context.Funcionario.Where(f => f.IdEmpresa == idEmpresa);
+
+            foreach (var fun in funcionarios)
+            {
+                _context.Users.Remove(_context.Users.Where(u => u.Email == fun.Email).First());
+                _context.Funcionario.Remove(fun);
+            }                            
         }
     }
 }
