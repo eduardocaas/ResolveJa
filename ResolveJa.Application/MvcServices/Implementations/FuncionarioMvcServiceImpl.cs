@@ -14,10 +14,14 @@ namespace ResolveJa.Application.MvcServices.Implementations
     public class FuncionarioMvcServiceImpl : IFuncionarioMvcService
     {
         private readonly ResolveJaDbContext _context;
+        private readonly IUserMvcService _userMvcService;
 
-        public FuncionarioMvcServiceImpl(ResolveJaDbContext context)
+        public FuncionarioMvcServiceImpl(
+            ResolveJaDbContext context, 
+            IUserMvcService userMvcService)
         {
             _context = context;
+            _userMvcService = userMvcService;
         }
 
         public Funcionario ValidFuncionario(Funcionario funcionario, string emailGestor)
