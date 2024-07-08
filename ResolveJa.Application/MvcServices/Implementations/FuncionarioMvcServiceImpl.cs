@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using ResolveJa.Application.InputModels;
 using ResolveJa.Application.MvcServices.Interfaces;
 using ResolveJa.Application.ViewModels;
 using ResolveJa.Core.Entities;
@@ -38,10 +39,11 @@ namespace ResolveJa.Application.MvcServices.Implementations
             return funcionario;
         }
 
-        public async Task CreateFuncionario(Funcionario funcionario)
+        public async Task CreateFuncionario(FuncionarioCreateInputModel inputModel)
         {
-            await _context.Funcionario.AddAsync(funcionario);
+            await _context.Funcionario.AddAsync(inputModel.Funcionario);
             await _context.SaveChangesAsync();
+            await _userMvcService.CreateFuncionario(inputModel);
         }
 
         public async Task CreateGestor(EmpresaCreateInputModel model)
