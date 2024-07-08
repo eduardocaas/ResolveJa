@@ -32,6 +32,8 @@ namespace ResolveJa.Application.MvcServices.Implementations
 
         public async Task DeleteEmpresa(int id)
         {
+            _funcionarioMvcService.DeleteFuncionarioEmpresa(id);
+
             var empresa = _context.Empresa.FirstOrDefault(x => x.Id == id);
             _context.Empresa.Remove(empresa);
 
