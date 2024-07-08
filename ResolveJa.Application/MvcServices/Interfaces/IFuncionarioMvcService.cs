@@ -15,6 +15,6 @@ namespace ResolveJa.Application.MvcServices.Interfaces
         Task<List<Funcionario>> GetAll(string emailGestor);
         Task CreateFuncionario(Funcionario funcionario, FuncionarioCreateInputModel inputModel);
         Funcionario ValidFuncionario(Funcionario funcionario, string emailGestor);
-        Task DeleteFuncionarioEmpresa(int idEmpresa);
+        void DeleteFuncionarioEmpresa(int idEmpresa);
     }
 }
