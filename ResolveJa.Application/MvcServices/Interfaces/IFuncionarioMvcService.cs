@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ResolveJa.Application.InputModels;
 using ResolveJa.Application.ViewModels;
 using ResolveJa.Core.Entities;
 
@@ -12,7 +13,7 @@ namespace ResolveJa.Application.MvcServices.Interfaces
     {
         Task CreateGestor(EmpresaCreateInputModel model);
         Task<List<Funcionario>> GetAll(string emailGestor);
-        Task CreateFuncionario(Funcionario funcionario);
+        Task CreateFuncionario(FuncionarioCreateInputModel inputModel);
         Funcionario ValidFuncionario(Funcionario funcionario, string emailGestor);
     }
 }
