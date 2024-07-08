@@ -43,6 +43,10 @@
                 {
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 }
+                    @if (item.Email == User.Identity.Name)
+                    {
+                        <span>GESTOR</span>
+                    }
             </td>
         </tr>
 }
