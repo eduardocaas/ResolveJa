@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using ResolveJa.Application.MvcServices.Interfaces;
 using ResolveJa.Application.ViewModels;
 using ResolveJa.Infrastructure.Data.Persistence;
@@ -35,7 +36,9 @@ namespace ResolveJa.Application.MvcServices.Implementations
             _context.Empresa.Remove(empresa);
 
             string? url = _context.Empresa.Select(e => e.Url).FirstOrDefault();
-            IdentityUser user = (IdentityUser) _context.Users.Where(u => u.Email.StartsWith(url));
+            var likeExpression = url+"%";
+
+            IdentityUser? user = _context.Users.Where(u => EF.Functions.Like(u.Email, likeExpression)).FirstOrDefault();
             _context.Users.Remove(user);
         }
     }
