@@ -47,9 +47,25 @@ namespace ResolveJa.Application.MvcServices.Implementations
             await userManager.AddToRoleAsync(identityGestor, Roles.Gestor);
         }
 
-        public Task CreateFuncionario(FuncionarioCreateInputModel model)
+        public async Task CreateFuncionario(FuncionarioCreateInputModel model)
         {
-            throw new NotImplementedException();
+            IdentityUser identityFuncionario = new IdentityUser();
+
+            Guid guid = new Guid();
+            identityFuncionario.Id = guid.ToString();
+            identityFuncionario.UserName = model.Funcionario.Email;
+            identityFuncionario.Email = model.Funcionario.Email;
+
+            await _context.Users.AddAsync(identityFuncionario);
+
+            var hashedPassword = _passwordHasher.HashPassword(identityFuncionario, model.SenhaFuncionario);
+            identityFuncionario.SecurityStamp = Guid.NewGuid().ToString();
+            identityFuncionario.PasswordHash = hashedPassword;
+
+            await _context.SaveChangesAsync();
+
+            var userManager = _services.GetRequiredService<UserManager<IdentityUser>>();
+            await userManager.AddToRoleAsync(identityFuncionario, Roles.Funcionario);
         }
     }
 }
