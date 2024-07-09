@@ -55,4 +55,4 @@ namespace ResolveJa.Core.Validations
         }
     }
 }
-}
+

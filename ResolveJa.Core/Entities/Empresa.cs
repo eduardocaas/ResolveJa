@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ResolveJa.Application.Validations;
+using ResolveJa.Core.Validations;
 
 namespace ResolveJa.Core.Entities
 {
