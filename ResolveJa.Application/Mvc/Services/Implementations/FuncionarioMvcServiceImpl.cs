@@ -5,13 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using ResolveJa.Application.InputModels;
-using ResolveJa.Application.MvcServices.Interfaces;
-using ResolveJa.Application.ViewModels;
+using ResolveJa.Application.Mvc.MvcInputModels;
+using ResolveJa.Application.Mvc.MvcServices.Interfaces;
 using ResolveJa.Core.Entities;
 using ResolveJa.Infrastructure.Data.Persistence;
 
-namespace ResolveJa.Application.MvcServices.Implementations
+namespace ResolveJa.Application.Mvc.MvcServices.Implementations
 {
     public class FuncionarioMvcServiceImpl : IFuncionarioMvcService
     {
@@ -19,7 +18,7 @@ namespace ResolveJa.Application.MvcServices.Implementations
         private readonly IUserMvcService _userMvcService;
 
         public FuncionarioMvcServiceImpl(
-            ResolveJaDbContext context, 
+            ResolveJaDbContext context,
             IUserMvcService userMvcService)
         {
             _context = context;
@@ -53,7 +52,7 @@ namespace ResolveJa.Application.MvcServices.Implementations
             Empresa? empresa = _context.Empresa.FirstOrDefault(e => e.Url == model.Empresa.Url.ToString());
 
             funcionario.Nome = model.Empresa.Url.ToString();
-            funcionario.Email = (model.Empresa.Url.ToString() + "@email.com");
+            funcionario.Email = model.Empresa.Url.ToString() + "@email.com";
             funcionario.Empresa = empresa;
             funcionario.IdEmpresa = empresa.Id;
 
@@ -83,11 +82,11 @@ namespace ResolveJa.Application.MvcServices.Implementations
             foreach (var fun in funcionarios)
             {
                 IdentityUser? user = _context.Users.Where(u => u.Email == fun.Email).FirstOrDefault();
-                if (user != null)        
+                if (user != null)
                     _context.Users.Remove(user);
-                               
+
                 _context.Funcionario.Remove(fun);
-            }                            
+            }
         }
     }
 }

@@ -1,12 +1,11 @@
-﻿using ResolveJa.Application.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ResolveJa.Application.InputModels;
+using ResolveJa.Application.Mvc.MvcInputModels;
 
-namespace ResolveJa.Application.MvcServices.Interfaces
+namespace ResolveJa.Application.Mvc.MvcServices.Interfaces
 {
     public interface IUserMvcService
     {

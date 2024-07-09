@@ -6,14 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ResolveJa.Application.ViewModels
+namespace ResolveJa.Application.Mvc.MvcInputModels
 {
-    public class EmpresaCreateInputModel
+    public class FuncionarioCreateInputModel
     {
-        public Empresa Empresa { get; set; }
+        public Funcionario Funcionario { get; set; }
         [Required]
         [MinLength(6, ErrorMessage = "A senha deve ter no mínimo 6 caracteres")]
-        [Display(Name = "Senha Gestor")]
-        public string SenhaGestor { get; set; }
+        [Display(Name = "Senha Funcionário")]
+        public string SenhaFuncionario { get; set; }
     }
 }

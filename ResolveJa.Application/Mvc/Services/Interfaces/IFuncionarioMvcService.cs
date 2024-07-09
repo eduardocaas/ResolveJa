@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ResolveJa.Application.InputModels;
-using ResolveJa.Application.ViewModels;
+using ResolveJa.Application.Mvc.MvcInputModels;
 using ResolveJa.Core.Entities;
 
-namespace ResolveJa.Application.MvcServices.Interfaces
+namespace ResolveJa.Application.Mvc.MvcServices.Interfaces
 {
     public interface IFuncionarioMvcService
     {

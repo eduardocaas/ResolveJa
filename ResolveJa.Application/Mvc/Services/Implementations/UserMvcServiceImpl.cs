@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using ResolveJa.Application.InputModels;
-using ResolveJa.Application.MvcServices.Interfaces;
-using ResolveJa.Application.ViewModels;
+using ResolveJa.Application.Mvc.MvcInputModels;
+using ResolveJa.Application.Mvc.MvcServices.Interfaces;
 using ResolveJa.Infrastructure.Data.Persistence;
 using ResolveJa.Web.MVC.Common;
 
-namespace ResolveJa.Application.MvcServices.Implementations
+namespace ResolveJa.Application.Mvc.MvcServices.Implementations
 {
     public class UserMvcServiceImpl : IUserMvcService
     {
@@ -14,9 +13,9 @@ namespace ResolveJa.Application.MvcServices.Implementations
         private readonly IPasswordHasher<IdentityUser> _passwordHasher;
         private readonly IServiceProvider _services;
 
-        
+
         public UserMvcServiceImpl(
-            ResolveJaDbContext context, 
+            ResolveJaDbContext context,
             IPasswordHasher<IdentityUser> passwordHasher,
             IServiceProvider services)
         {
@@ -32,7 +31,7 @@ namespace ResolveJa.Application.MvcServices.Implementations
             Guid guid = Guid.NewGuid();
             identityGestor.Id = guid.ToString();
             identityGestor.UserName = model.Empresa.Url.ToString() + "@email.com";
-            identityGestor.Email = (model.Empresa.Url.ToString() + "@email.com");
+            identityGestor.Email = model.Empresa.Url.ToString() + "@email.com";
             //identityGestor.NormalizedUserName = (model.Empresa.Url.ToString() + "@email.com");
 
             await _context.Users.AddAsync(identityGestor);

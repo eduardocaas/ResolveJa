@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using ResolveJa.Application.MvcServices.Interfaces;
-using ResolveJa.Application.ViewModels;
+using ResolveJa.Application.Mvc.MvcInputModels;
+using ResolveJa.Application.Mvc.MvcServices.Interfaces;
 using ResolveJa.Infrastructure.Data.Persistence;
-namespace ResolveJa.Application.MvcServices.Implementations
+namespace ResolveJa.Application.Mvc.MvcServices.Implementations
 {
     public class EmpresaMvcServiceImpl : IEmpresaMvcService
     {
@@ -20,7 +20,7 @@ namespace ResolveJa.Application.MvcServices.Implementations
             _userMvcService = userMvcService;
             _funcionarioMvcService = funcionarioMvcService;
         }
-        
+
         public async Task CreateEmpresa(EmpresaCreateInputModel model) // Realiza persistência da Empresa e cria usuário padrão
         {
             _context.Empresas.Add(model.Empresa);
@@ -35,11 +35,11 @@ namespace ResolveJa.Application.MvcServices.Implementations
             _funcionarioMvcService.DeleteFuncionarioEmpresa(id);
 
             var empresa = _context.Empresa.FirstOrDefault(x => x.Id == id);
-            if (empresa != null) 
+            if (empresa != null)
                 _context.Empresa.Remove(empresa);
 
             string? url = _context.Empresa.Select(e => e.Url).FirstOrDefault();
-            var likeExpression = url+"%";
+            var likeExpression = url + "%";
 
             IdentityUser? user = _context.Users.Where(u => EF.Functions.Like(u.Email, likeExpression)).FirstOrDefault();
             if (user != null)
