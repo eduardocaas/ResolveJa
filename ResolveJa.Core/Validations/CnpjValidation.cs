@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ResolveJa.Application.Validations
+namespace ResolveJa.Core.Validations
 {
     public class CnpjValidation : ValidationAttribute
     {
