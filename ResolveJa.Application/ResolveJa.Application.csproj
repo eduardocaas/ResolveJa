@@ -15,4 +15,19 @@
     <ProjectReference Include="..\ResolveJa.Infrastructure.Data\ResolveJa.Infrastructure.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Resources\Api\InputModels\TicketCreateInputModel.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TicketCreateInputModel.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Api\InputModels\TicketCreateInputModel.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TicketCreateInputModel.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
