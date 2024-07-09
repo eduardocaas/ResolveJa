@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ResolveJa.Application.MvcServices.Interfaces;
-using ResolveJa.Application.ViewModels;
+using ResolveJa.Application.Mvc.MvcInputModels;
+using ResolveJa.Application.Mvc.MvcServices.Interfaces;
 using ResolveJa.Core.Entities;
 using ResolveJa.Infrastructure.Data.Persistence;
 
