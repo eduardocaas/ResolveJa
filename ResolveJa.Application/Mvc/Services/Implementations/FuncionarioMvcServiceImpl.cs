@@ -89,9 +89,16 @@ namespace ResolveJa.Application.Mvc.MvcServices.Implementations
             }
         }
 
-        public Task DeleteFuncionario(int id)
+        public async Task DeleteFuncionario(int id)
         {
-            throw new NotImplementedException();
+            var funcionario = _context.Funcionario.FirstOrDefault(f => f.Id == id);
+
+            IdentityUser? user = _context.Users.FirstOrDefault(u => u.Email == funcionario.Email);
+            if (user != null)
+                _context.Users.Remove(user);
+
+            _context.Funcionario.Remove(funcionario);
+            await _context.SaveChangesAsync();
         }
     }
 }
