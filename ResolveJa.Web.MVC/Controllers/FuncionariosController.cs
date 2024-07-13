@@ -160,7 +160,7 @@ namespace ResolveJa.Web.MVC.Controllers
             var funcionario = await _context.Funcionario.FindAsync(id);
             if (funcionario != null)
             {
-                _context.Funcionario.Remove(funcionario);
+                await _funcionarioMvcService.DeleteFuncionario(id);
             }
             
             await _context.SaveChangesAsync();
