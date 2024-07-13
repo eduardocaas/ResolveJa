@@ -15,5 +15,6 @@ namespace ResolveJa.Application.Mvc.MvcServices.Interfaces
         Task CreateFuncionario(Funcionario funcionario, FuncionarioCreateInputModel inputModel);
         Funcionario ValidFuncionario(Funcionario funcionario, string emailGestor);
         void DeleteFuncionarioEmpresa(int idEmpresa);
+        Task DeleteFuncionario(int id);
     }
 }
