@@ -88,5 +88,10 @@ namespace ResolveJa.Application.Mvc.MvcServices.Implementations
                 _context.Funcionario.Remove(fun);
             }
         }
+
+        public Task DeleteFuncionario(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
