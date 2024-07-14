@@ -10,6 +10,15 @@ namespace ResolveJa.Core.Entities
 {
     public class Ticket : BaseEntity
     {
+        public Ticket(string titulo, string cpf, string email, string conteudo, int idEmpresa)
+        {
+            Titulo = titulo;
+            Cpf = cpf;
+            Email = email;
+            Conteudo = conteudo;
+            IdEmpresa = idEmpresa;
+        }
+
         public string Titulo { get; set; }
         [CpfValidation(errorMessage: "Insira um CPF válido")]
         public string Cpf { get; set; }
