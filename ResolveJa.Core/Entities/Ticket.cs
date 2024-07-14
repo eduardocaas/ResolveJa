@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ResolveJa.Core.Validations;
 
 namespace ResolveJa.Core.Entities
 {
     public class Ticket : BaseEntity
     {
         public string Titulo { get; set; }
+        [CpfValidation(errorMessage: "Insira um CPF válido")]
         public string Cpf { get; set; }
         public string Email { get; set; }
         public TicketStatusEnum Status { get; set; }
