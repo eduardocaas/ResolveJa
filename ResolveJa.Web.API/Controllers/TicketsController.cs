@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Mime;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Opw.HttpExceptions;
 using ResolveJa.Application.Api.InputModels;
@@ -25,8 +26,8 @@ namespace ResolveJa.Web.API.Controllers
         {
             try
             {
-                var id = await ticketApiService.Create(inputModel);
-                return Created();
+                var id = await _ticketApiService.Create(inputModel);
+                return NoContent();
             }
             catch (NotFoundException nfException)
             {
