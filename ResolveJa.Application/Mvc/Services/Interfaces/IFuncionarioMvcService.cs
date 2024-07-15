@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ResolveJa.Application.Mvc.MvcInputModels;
 using ResolveJa.Core.Entities;
 
-namespace ResolveJa.Application.Mvc.MvcServices.Interfaces
+namespace ResolveJa.Application.Mvc.Services.Interfaces
 {
     public interface IFuncionarioMvcService
     {
