@@ -25,8 +25,9 @@ namespace ResolveJa.Application.Api.Services.Implementations
 
         public async Task<int> Create(TicketCreateInputModel inputModel)
         {
-            var id = await _empresaApiService.GetId(inputModel.UrlEmpresa);
-            Ticket ticket = new Ticket(inputModel.Titulo, inputModel.Cpf, inputModel.Email, inputModel.Conteudo, (int) id);
+            Empresa empresa = await _empresaApiService.GetId(inputModel.UrlEmpresa);
+
+            Ticket ticket = new Ticket(inputModel.Titulo, inputModel.Cpf, inputModel.Email, inputModel.Conteudo, empresa, empresa.Id );
 
             await _context.Ticket.AddAsync(ticket);
             await _context.SaveChangesAsync();
