@@ -4,8 +4,8 @@ using ResolveJa.Infrastructure.Data.Persistence;
 using ResolveJa.Web.MVC.Common;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using ResolveJa.Application.Mvc.MvcServices.Implementations;
-using ResolveJa.Application.Mvc.MvcServices.Interfaces;
+using ResolveJa.Application.Mvc.Services.Implementations;
+using ResolveJa.Application.Mvc.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
