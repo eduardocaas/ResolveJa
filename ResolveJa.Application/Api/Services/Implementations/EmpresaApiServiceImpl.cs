@@ -29,9 +29,13 @@ namespace ResolveJa.Application.Api.Services.Implementations
             return empresa;
         }
 
-        public Task<int?> GetId(string url)
+        public async Task<int?> GetId(string url)
         {
-            throw new NotImplementedException();
+            int? id = await _context.Empresa.Where(e => e.Url == url).Select(e => e.Id).FirstOrDefaultAsync();
+
+            if (id == null || id == 0)
+                throw new NotFoundException($"Empresa com URL: {url} não encontrada!");
+            return id;
         }
     }
 }
