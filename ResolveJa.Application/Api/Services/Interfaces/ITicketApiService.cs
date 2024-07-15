@@ -9,6 +9,6 @@ namespace ResolveJa.Application.Api.Services.Interfaces
 {
     public interface ITicketApiService
     {
-        Task Create(TicketCreateInputModel inputModel);
+        Task<int> Create(TicketCreateInputModel inputModel);
     }
 }
