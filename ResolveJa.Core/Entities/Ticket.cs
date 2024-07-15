@@ -10,13 +10,16 @@ namespace ResolveJa.Core.Entities
 {
     public class Ticket : BaseEntity
     {
-        public Ticket(string titulo, string cpf, string email, string conteudo, int idEmpresa)
+        public Ticket() { }
+
+        public Ticket(string titulo, string cpf, string email, string conteudo, Empresa empresa, int idEmpresa)
         {
             Titulo = titulo;
             Cpf = cpf;
             Email = email;
             Conteudo = conteudo;
-            IdEmpresa = idEmpresa;
+            Empresa = empresa;
+            IdEmpresa = idEmpresa;       
         }
 
         public string Titulo { get; set; }
