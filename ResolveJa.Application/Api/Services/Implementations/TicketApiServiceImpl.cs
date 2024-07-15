@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using ResolveJa.Application.Api.InputModels;
 using ResolveJa.Application.Api.Services.Interfaces;
 using ResolveJa.Application.Api.ViewModels;
@@ -36,9 +37,17 @@ namespace ResolveJa.Application.Api.Services.Implementations
             return ticket.Id;
         }
 
-        public Task<List<TicketListApiViewModel>> GetTickets(string cpf, string urlEmpresa)
+        public async Task<List<TicketListApiViewModel>> GetTickets(string cpf, string urlEmpresa)
         {
-            
+            var id = _empresaApiService.GetId(urlEmpresa);
+            List<TicketListApiViewModel> tickets = new List<TicketListApiViewModel>();
+
+            var ticketsDb = await _context.Ticket.AsNoTracking().Where(t => t.Cpf == cpf).ToListAsync();
+            ticketsDb = ticketsDb.Where(t => t.Id.Equals(id)).ToList();
+
+            ticketsDb.ForEach(t => tickets.Add(new TicketListApiViewModel(t.Id, t.Titulo, t.Status)));
+            return Task.FromResult(tickets);
+
         }
     }
 }
