@@ -8,6 +8,6 @@ namespace ResolveJa.Application.Api.Services.Interfaces
 {
     public interface IEmpresaApiService
     {
-        Task<int> GetId(string url);
+        Task<int?> GetId(string url);
     }
 }
