@@ -39,7 +39,7 @@ namespace ResolveJa.Application.Api.Services.Implementations
 
         public async Task<List<TicketListApiViewModel>> GetTickets(string cpf, string urlEmpresa)
         {
-            var id = _empresaApiService.GetId(urlEmpresa);
+            var id = await _empresaApiService.GetId(urlEmpresa);
             List<TicketListApiViewModel> tickets = new List<TicketListApiViewModel>();
 
             var ticketsDb = await _context.Ticket.AsNoTracking().Where(t => t.Cpf == cpf).ToListAsync();
