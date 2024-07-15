@@ -53,7 +53,27 @@ namespace ResolveJa.Web.API.Controllers
             [FromQuery] string cpf, 
             [FromQuery] string urlEmpresa)
         {
-
+            try
+            {
+                var tickets = await _ticketApiService.GetTickets(cpf, urlEmpresa);
+                return Ok(tickets);
+            }
+            catch (NotFoundException nfException)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, new
+                {
+                    message = nfException.Message,
+                    date = DateTime.Now.ToString("dd/MM/yyyy - H:mm")
+                });
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new
+                {
+                    message = exception.Message,
+                    date = DateTime.Now.ToString("dd/MM/yyyy - H:mm")
+                });
+            }  
         }
     }
 }
