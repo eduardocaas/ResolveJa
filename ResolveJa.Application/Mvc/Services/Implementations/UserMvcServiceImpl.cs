@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using ResolveJa.Application.Mvc.MvcInputModels;
-using ResolveJa.Application.Mvc.MvcServices.Interfaces;
+using ResolveJa.Application.Mvc.Services.Interfaces;
 using ResolveJa.Infrastructure.Data.Persistence;
 using ResolveJa.Web.MVC.Common;
 
-namespace ResolveJa.Application.Mvc.MvcServices.Implementations
+namespace ResolveJa.Application.Mvc.Services.Implementations
 {
     public class UserMvcServiceImpl : IUserMvcService
     {

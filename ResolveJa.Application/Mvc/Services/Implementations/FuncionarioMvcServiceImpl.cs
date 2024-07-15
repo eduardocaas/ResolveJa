@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ResolveJa.Application.Mvc.MvcInputModels;
-using ResolveJa.Application.Mvc.MvcServices.Interfaces;
+using ResolveJa.Application.Mvc.Services.Interfaces;
 using ResolveJa.Core.Entities;
 using ResolveJa.Infrastructure.Data.Persistence;
 
-namespace ResolveJa.Application.Mvc.MvcServices.Implementations
+namespace ResolveJa.Application.Mvc.Services.Implementations
 {
     public class FuncionarioMvcServiceImpl : IFuncionarioMvcService
     {
