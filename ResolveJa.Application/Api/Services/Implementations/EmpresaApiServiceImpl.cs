@@ -28,5 +28,10 @@ namespace ResolveJa.Application.Api.Services.Implementations
                 throw new NotFoundException($"Empresa com URL: {url} não encontrada!");
             return empresa;
         }
+
+        public Task<int?> GetId(string url)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
