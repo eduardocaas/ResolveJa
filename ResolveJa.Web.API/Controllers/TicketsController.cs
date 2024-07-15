@@ -11,15 +11,22 @@ namespace ResolveJa.Web.API.Controllers
     [Route("api/[controller]")]
     public class TicketsController : ControllerBase
     {
+        private readonly ITicketApiService _ticketApiService;
+
+        public TicketsController(ITicketApiService ticketApiService)
+        {
+            _ticketApiService = ticketApiService;
+        }
+
         [HttpPost]
         [Consumes(MediaTypeNames.Application.Json)]
-        public IActionResult Create(
-            [FromBody] TicketCreateInputModel inputModel,
-            [FromServices] ITicketApiService ticketApiService)
+        public async Task<IActionResult> Create(
+            [FromBody] TicketCreateInputModel inputModel)
         {
             try
             {
-    
+                var id = await ticketApiService.Create(inputModel);
+                return Created();
             }
             catch (NotFoundException nfException)
             {
