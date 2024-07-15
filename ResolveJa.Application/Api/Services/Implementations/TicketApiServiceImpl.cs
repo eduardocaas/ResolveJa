@@ -46,7 +46,7 @@ namespace ResolveJa.Application.Api.Services.Implementations
             ticketsDb = ticketsDb.Where(t => t.Id.Equals(id)).ToList();
 
             ticketsDb.ForEach(t => tickets.Add(new TicketListApiViewModel(t.Id, t.Titulo, t.Status)));
-            return Task.FromResult(tickets);
+            return tickets;
 
         }
     }
