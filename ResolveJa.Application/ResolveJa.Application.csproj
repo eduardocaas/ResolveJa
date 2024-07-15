@@ -32,7 +32,6 @@
 
   <ItemGroup>
     <Folder Include="Api\Services\Implementations\" />
-    <Folder Include="Api\Services\Interfaces\" />
   </ItemGroup>
 
 </Project>
