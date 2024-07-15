@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Opw.HttpExceptions;
 using ResolveJa.Application.Api.Services.Interfaces;
+using ResolveJa.Core.Entities;
 using ResolveJa.Infrastructure.Data.Persistence;
 
 namespace ResolveJa.Application.Api.Services.Implementations
@@ -18,12 +20,13 @@ namespace ResolveJa.Application.Api.Services.Implementations
             _context = context;
         }
 
-        public Task<int?> GetId(string url)
+        public async Task<Empresa?> GetId(string url)
         {
-            int? id = _context.Empresa.Where(e => e.Url == url).Select(e => e.Id).FirstOrDefault();
-            if (id == null)
+            Empresa? empresa = await _context.Empresa.FirstOrDefaultAsync(e => e.Url == url);
+
+            if (empresa == null)
                 throw new NotFoundException($"Empresa com URL: {url} não encontrada!");
-            return Task.FromResult(id);
+            return empresa;
         }
     }
 }
