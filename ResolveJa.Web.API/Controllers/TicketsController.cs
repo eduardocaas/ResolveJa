@@ -1,5 +1,8 @@
 ﻿using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc;
+using Opw.HttpExceptions;
+using ResolveJa.Application.Api.InputModels;
+using ResolveJa.Application.Api.Services.Interfaces;
 
 namespace ResolveJa.Web.API.Controllers
 {
@@ -9,9 +12,22 @@ namespace ResolveJa.Web.API.Controllers
     {
         [HttpPost]
         [Consumes(MediaTypeNames.Application.Json)]
-        public IActionResult Create()
+        public IActionResult Create(
+            [FromBody] TicketCreateInputModel inputModel,
+            [FromServices] ITicketApiService ticketApiService)
         {
-            return Ok();
+            try
+            {
+    
+            }
+            catch (Exception exception)
+            {
+
+            }
+            catch (NotFoundException nfException)
+            {
+
+            }
         }
     }
 }
