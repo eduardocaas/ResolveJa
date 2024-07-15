@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ResolveJa.Application.Api.Services.Interfaces
 {
-    internal interface IEmpresaApiService
+    public interface IEmpresaApiService
     {
+        Task<int> GetId(string url);
     }
 }
