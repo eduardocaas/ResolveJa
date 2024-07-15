@@ -15,6 +15,14 @@ namespace ResolveJa.Application.Api.Services.Implementations
         private readonly ResolveJaDbContext _context;
         private readonly IEmpresaApiService _empresaApiService;
 
+        public TicketApiServiceImpl(
+            ResolveJaDbContext context,
+            IEmpresaApiService empresaApiService)
+        {
+            _context = context;
+            _empresaApiService = empresaApiService;
+        }
+
         public Task Create(TicketCreateInputModel inputModel)
         {
 
