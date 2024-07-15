@@ -26,7 +26,7 @@ namespace ResolveJa.Application.Api.Services.Implementations
 
         public async Task<int> Create(TicketCreateInputModel inputModel)
         {
-            Empresa empresa = await _empresaApiService.GetId(inputModel.UrlEmpresa);
+            Empresa empresa = await _empresaApiService.GetEmpresa(inputModel.UrlEmpresa);
 
             Ticket ticket = new Ticket(inputModel.Titulo, inputModel.Cpf, inputModel.Email, inputModel.Conteudo, empresa, empresa.Id );
 
@@ -38,7 +38,7 @@ namespace ResolveJa.Application.Api.Services.Implementations
 
         public Task<List<TicketListApiViewModel>> GetTickets(string cpf, string urlEmpresa)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }

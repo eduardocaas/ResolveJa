@@ -20,7 +20,7 @@ namespace ResolveJa.Application.Api.Services.Implementations
             _context = context;
         }
 
-        public async Task<Empresa?> GetId(string url)
+        public async Task<Empresa?> GetEmpresa(string url)
         {
             Empresa? empresa = await _context.Empresa.FirstOrDefaultAsync(e => e.Url == url);
 
