@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ResolveJa.Application.Api.ApiInputModels
+namespace ResolveJa.Application.Api.InputModels
 {
     public class TicketCreateInputModel
     {
