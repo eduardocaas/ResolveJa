@@ -1,16 +1,22 @@
+using Microsoft.EntityFrameworkCore;
 using ResolveJa.Application.Api.Services.Implementations;
 using ResolveJa.Application.Api.Services.Interfaces;
+using ResolveJa.Infrastructure.Data.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Injeção de serviços
-builder.Services.AddTransient<IEmpresaApiService, EmpresaApiServiceImpl>();
-builder.Services.AddTransient<ITicketApiService, TicketApiServiceImpl>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Injeção de serviços
+builder.Services.AddTransient<IEmpresaApiService, EmpresaApiServiceImpl>();
+builder.Services.AddTransient<ITicketApiService, TicketApiServiceImpl>();
+
+var connectionString = builder.Configuration.GetConnectionString("LocalConnectionTest");
+builder.Services.AddDbContext<ResolveJaDbContext>(options =>
+    options.UseSqlServer(connectionString, b => b.MigrationsAssembly("ResolveJa.Infrastructure.Data")), ServiceLifetime.Singleton);
 
 var app = builder.Build();
 
