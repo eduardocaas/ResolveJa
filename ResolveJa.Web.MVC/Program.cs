@@ -9,7 +9,7 @@ using ResolveJa.Application.Mvc.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Injeção de dependência
+// Injeção de serviços
 builder.Services.AddTransient<IEmpresaMvcService, EmpresaMvcServiceImpl>();
 builder.Services.AddTransient<IUserMvcService, UserMvcServiceImpl>();
 builder.Services.AddTransient<IFuncionarioMvcService, FuncionarioMvcServiceImpl>();
