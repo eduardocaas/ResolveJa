@@ -43,7 +43,7 @@ namespace ResolveJa.Application.Api.Services.Implementations
             List<TicketListApiViewModel> tickets = new List<TicketListApiViewModel>();
 
             var ticketsDb = await _context.Ticket.AsNoTracking().Where(t => t.Cpf == cpf).ToListAsync();
-            ticketsDb = ticketsDb.Where(t => t.Id.Equals(id)).ToList();
+            ticketsDb = ticketsDb.Where(t => t.IdEmpresa.Equals(id)).ToList();
 
             ticketsDb.ForEach(t => tickets.Add(new TicketListApiViewModel(t.Id, t.Titulo, t.Status)));
             return tickets;
