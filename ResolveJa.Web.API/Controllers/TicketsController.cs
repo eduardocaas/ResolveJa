@@ -46,5 +46,14 @@ namespace ResolveJa.Web.API.Controllers
                 });
             }
         }
+
+        [HttpGet]
+        [Produces(MediaTypeNames.Application.Json)]
+        public async Task<IActionResult> GetTickets(
+            [FromQuery] string cpf, 
+            [FromQuery] string urlEmpresa)
+        {
+
+        }
     }
 }
