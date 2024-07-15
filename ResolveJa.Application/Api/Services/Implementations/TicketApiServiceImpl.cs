@@ -23,11 +23,12 @@ namespace ResolveJa.Application.Api.Services.Implementations
             _empresaApiService = empresaApiService;
         }
 
-        public Task Create(TicketCreateInputModel inputModel)
+        public async Task Create(TicketCreateInputModel inputModel)
         {
+            var id = await _empresaApiService.GetId(inputModel.UrlEmpresa);
+            Ticket ticket = new Ticket(inputModel.Titulo, inputModel.Cpf, inputModel.Email, inputModel.Conteudo, (int) id);
 
-            throw new NotImplementedException();
-            //Ticket ticket = new Ticket(inputModel.Titulo, inputModel.Cpf, inputModel.Email, inputModel.Conteudo);
+            await _context.Ticket.AddAsync(ticket);
         }
     }
 }
