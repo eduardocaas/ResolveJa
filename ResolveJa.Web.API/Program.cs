@@ -1,6 +1,11 @@
+using ResolveJa.Application.Api.Services.Implementations;
+using ResolveJa.Application.Api.Services.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Injeção de serviços
+builder.Services.AddTransient<IEmpresaApiService, EmpresaApiServiceImpl>();
+builder.Services.AddTransient<ITicketApiService, TicketApiServiceImpl>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
