@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ResolveJa.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace ResolveJa.Application.Api.ViewModels
 {
     public struct TicketListApiViewModel
     {
-        public TicketListApiViewModel(int id, string titulo, int status)
+        public TicketListApiViewModel(int id, string titulo, TicketStatusEnum status)
         {
             Id = id;
             Titulo = titulo;
@@ -17,7 +18,7 @@ namespace ResolveJa.Application.Api.ViewModels
 
         public int Id { get; set; }
         public string Titulo { get; set; }
-        public int Status { get; set; }
+        public TicketStatusEnum Status { get; set; }
 
     }
 }
