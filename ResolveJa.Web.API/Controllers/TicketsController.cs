@@ -79,7 +79,28 @@ namespace ResolveJa.Web.API.Controllers
         public async Task<IActionResult> GetTicket(
             [FromRoute] int id)
         {
-
+            try
+            {
+                var ticket = await _ticketApiService.GetTicket(id);
+                return Ok(ticket);
+            }
+            catch (NotFoundException nfException)
+            {
+                return StatusCode(StatusCodes.Status404NotFound, new
+                {
+                    message = nfException.Message,
+                    date = DateTime.Now.ToString("dd/MM/yyyy - H:mm")
+                });
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new
+                {
+                    message = exception.Message,
+                    date = DateTime.Now.ToString("dd/MM/yyyy - H:mm")
+                });
+            }
         }
+
     }
 }
