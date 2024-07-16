@@ -75,5 +75,11 @@ namespace ResolveJa.Web.API.Controllers
                 });
             }  
         }
+
+        public async Task<IActionResult> GetTicket(
+            [FromRoute] int id)
+        {
+
+        }
     }
 }

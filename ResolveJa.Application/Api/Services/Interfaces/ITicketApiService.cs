@@ -12,5 +12,6 @@ namespace ResolveJa.Application.Api.Services.Interfaces
     {
         Task<int> Create(TicketCreateInputModel inputModel);
         Task<List<TicketListApiViewModel>> GetTickets(string cpf, string urlEmpresa);
+        Task<TicketDetailsApiViewModel> GetTicket(int id);
     }
 }
