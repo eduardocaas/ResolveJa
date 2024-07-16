@@ -9,6 +9,15 @@ namespace ResolveJa.Application.Api.ViewModels
 {
     public struct TicketDetailsApiViewModel
     {
+        public TicketDetailsApiViewModel(TicketStatusEnum status, string email, string cpf, string conteudo, string resposta)
+        {
+            Status = status;
+            Email = email;
+            Cpf = cpf;
+            Conteudo = conteudo;
+            Resposta = resposta;
+        }
+
         public TicketStatusEnum Status { get; set; }
         public string Email { get; set; }
         public string Cpf { get; set; }
