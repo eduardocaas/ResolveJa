@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Opw.HttpExceptions;
 using ResolveJa.Application.Api.InputModels;
 using ResolveJa.Application.Api.Services.Interfaces;
 using ResolveJa.Application.Api.ViewModels;
@@ -50,9 +51,17 @@ namespace ResolveJa.Application.Api.Services.Implementations
 
         }
 
-        public Task<TicketDetailsApiViewModel> GetTicket(int id)
+        public async Task<TicketDetailsApiViewModel> GetTicket(int id)
         {
-            throw new NotImplementedException();
+            Ticket? ticket = await _context.Ticket.FirstOrDefaultAsync(t => t.Id == id);
+
+            if (ticket == null)
+                throw new NotFoundException($"Ticket com id: {id} não encontrado");
+
+            TicketDetailsApiViewModel ticketDetails =
+                new TicketDetailsApiViewModel(ticket.Status, ticket.Email, ticket.Cpf, ticket.Conteudo, ticket.Resposta);
+
+            return ticketDetails;
         }
     }
 }
