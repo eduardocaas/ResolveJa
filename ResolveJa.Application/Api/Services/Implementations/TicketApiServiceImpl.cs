@@ -49,5 +49,10 @@ namespace ResolveJa.Application.Api.Services.Implementations
             return tickets;
 
         }
+
+        public Task<TicketDetailsApiViewModel> GetTicket(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
