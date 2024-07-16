@@ -76,6 +76,9 @@ namespace ResolveJa.Web.API.Controllers
             }  
         }
 
+        [HttpGet]
+        [Route("{id}")]
+        [Produces(MediaTypeNames.Application.Json)]
         public async Task<IActionResult> GetTicket(
             [FromRoute] int id)
         {
