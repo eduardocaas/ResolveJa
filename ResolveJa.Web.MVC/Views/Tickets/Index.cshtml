@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ResolveJa.Core.Entities.Ticket>
+﻿@model List<ResolveJa.Application.Mvc.ViewModels.TicketListMvcViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,34 +13,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Titulo)
+                @Html.DisplayNameFor(model => model.GetEnumerator().Current.Titulo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cpf)
+                @Html.DisplayNameFor(model => model.GetEnumerator().Current.Email)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.GetEnumerator().Current.DataCriacao)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Conteudo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Resposta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataCriacao)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataFechamento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdEmpresa)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdFuncionario)
+                @Html.DisplayNameFor(model => model.GetEnumerator().Current.Funcionario)
             </th>
             <th></th>
         </tr>
@@ -52,31 +34,13 @@
                 @Html.DisplayFor(modelItem => item.Titulo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Cpf)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Conteudo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Resposta)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DataCriacao)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DataFechamento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdEmpresa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdFuncionario)
+                @Html.DisplayFor(modelItem => item.Funcionario)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
