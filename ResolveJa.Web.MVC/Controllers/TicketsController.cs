@@ -17,19 +17,22 @@ namespace ResolveJa.Web.MVC.Controllers
     {
         private readonly ResolveJaDbContext _context;
         private readonly ITicketMvcService _ticketMvcService;
+        private readonly IFuncionarioMvcService _funcionarioMvcService;
 
-        public TicketsController(ResolveJaDbContext context, ITicketMvcService ticketMvcService)
+        public TicketsController(ResolveJaDbContext context, ITicketMvcService ticketMvcService, IFuncionarioMvcService funcionarioMvcService)
         {
             _context = context;
             _ticketMvcService = ticketMvcService;
+            _funcionarioMvcService = funcionarioMvcService;
         }
 
         // GET: Tickets
         public async Task<IActionResult> Index()
         {
-              return _context.Tickets != null ? 
-                          View(await _context.Tickets.ToListAsync()) :
-                          Problem("Entity set 'ResolveJaDbContext.Tickets'  is null.");
+            var email = User.Identity.Name;
+            var idEmpresa = await _funcionarioMvcService.GetIdEmpresa(email);
+
+            return View(await _ticketMvcService.GetAll(idEmpresa));
         }
 
         // GET: Tickets/Details/5
