@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using ResolveJa.Application.Mvc.Services.Interfaces;
 using ResolveJa.Core.Entities;
 using ResolveJa.Infrastructure.Data.Persistence;
 
@@ -15,10 +16,12 @@ namespace ResolveJa.Web.MVC.Controllers
     public class TicketsController : Controller
     {
         private readonly ResolveJaDbContext _context;
+        private readonly ITicketMvcService _ticketMvcService;
 
-        public TicketsController(ResolveJaDbContext context)
+        public TicketsController(ResolveJaDbContext context, ITicketMvcService ticketMvcService)
         {
             _context = context;
+            _ticketMvcService = ticketMvcService;
         }
 
         // GET: Tickets
