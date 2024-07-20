@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using ResolveJa.Application.Mvc.Services.Interfaces;
 using ResolveJa.Application.Mvc.ViewModels;
 using ResolveJa.Infrastructure.Data.Persistence;
@@ -18,9 +19,18 @@ namespace ResolveJa.Application.Mvc.Services.Implementations
             _context = context;
         }
 
-        public Task<List<TicketListMvcViewModel>> GetAll(int idEmpresa)
+        public async Task<List<TicketListMvcViewModel>> GetAll(int idEmpresa)
         {
-            throw new NotImplementedException();
+            var tickets = _context.Tickets.Where(t => t.IdEmpresa == idEmpresa).ToListAsync();
+
+            List<TicketListMvcViewModel> viewModels = new List<TicketListMvcViewModel>();
+
+            foreach (var ticket in await tickets)
+            {
+                viewModels.Add(new TicketListMvcViewModel(ticket.Id, ticket.Titulo, ticket.Email, ticket.DataCriacao, ticket.IdFuncionario, ticket.Funcionario));    
+            }
+
+            return viewModels;
         }
     }
 }
