@@ -39,6 +39,17 @@ namespace ResolveJa.Application.Mvc.Services.Implementations
             return funcionario;
         }
 
+        public async Task<int> GetIdEmpresa(string email)
+        {
+            var idEmpresa = await _context.Funcionario
+                .Where(f => f.Email == email)
+                .Include(f => f.Empresa)
+                .Select(f => f.Empresa.Id)
+                .FirstOrDefaultAsync();
+
+            return idEmpresa;
+        }
+
         public async Task CreateFuncionario(Funcionario funcionario, FuncionarioCreateInputModel inputModel)
         {
             await _context.Funcionario.AddAsync(funcionario);
