@@ -21,7 +21,7 @@ namespace ResolveJa.Application.Mvc.Services.Implementations
 
         public async Task<List<TicketListMvcViewModel>> GetAll(int idEmpresa)
         {
-            var tickets = await _context.Tickets.Where(t => t.IdEmpresa == idEmpresa).ToListAsync();
+            var tickets = await _context.Tickets.Include(t => t.Funcionario).Where(t => t.IdEmpresa == idEmpresa).ToListAsync();
 
             List<TicketListMvcViewModel> viewModels = new List<TicketListMvcViewModel>();
 
