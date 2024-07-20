@@ -18,7 +18,7 @@ namespace ResolveJa.Application.Mvc.Services.Implementations
             _context = context;
         }
 
-        public Task<List<TicketListMvcViewModel>> GetAll()
+        public Task<List<TicketListMvcViewModel>> GetAll(int idEmpresa)
         {
             throw new NotImplementedException();
         }

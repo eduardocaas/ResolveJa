@@ -9,6 +9,6 @@ namespace ResolveJa.Application.Mvc.Services.Interfaces
 {
     public interface ITicketMvcService
     {
-        Task<List<TicketListMvcViewModel>> GetAll();
+        Task<List<TicketListMvcViewModel>> GetAll(int idEmpresa);
     }
 }
