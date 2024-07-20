@@ -32,7 +32,7 @@ namespace ResolveJa.Web.MVC.Controllers
             var email = User.Identity.Name;
             var idEmpresa = await _funcionarioMvcService.GetIdEmpresa(email);
 
-            return View(await _ticketMvcService.GetAll(idEmpresa));
+            return View(await _ticketMvcService.GetAll(idEmpresa, 1));
         }
 
         // GET: Tickets/Details/5
