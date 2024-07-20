@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Authentication.ExtendedProtection;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ResolveJa.Application.Mvc.Services.Interfaces;
 using ResolveJa.Application.Mvc.ViewModels;
+using ResolveJa.Core.Enums;
 using ResolveJa.Infrastructure.Data.Persistence;
 
 namespace ResolveJa.Application.Mvc.Services.Implementations
@@ -19,18 +21,35 @@ namespace ResolveJa.Application.Mvc.Services.Implementations
             _context = context;
         }
 
-        public async Task<List<TicketListMvcViewModel>> GetAll(int idEmpresa)
+        public async Task<List<TicketListMvcViewModel>> GetAll(int idEmpresa, int opt)
         {
-            var tickets = await _context.Tickets.Include(t => t.Funcionario).Where(t => t.IdEmpresa == idEmpresa).ToListAsync();
+            // OPT 1 == TICKETS ABERTOS, OPT 2 == TICKETS FECHADO
 
+            var tickets = await _context.Tickets.Include(t => t.Funcionario).Where(t => t.IdEmpresa == idEmpresa).ToListAsync();
             List<TicketListMvcViewModel> viewModels = new List<TicketListMvcViewModel>();
 
-            foreach (var ticket in tickets)
+            if (opt == 1)
             {
-                viewModels.Add(new TicketListMvcViewModel(ticket.Id, ticket.Titulo, ticket.Email, ticket.DataCriacao, ticket.IdFuncionario, ticket.Funcionario));    
+                var ticketsAberto = tickets.Where(t => t.Status == TicketStatusEnum.ABERTO);
+                foreach (var ticket in ticketsAberto)
+                {
+                    viewModels.Add(new TicketListMvcViewModel(ticket.Id, ticket.Titulo, ticket.Email, ticket.DataCriacao, ticket.IdFuncionario, ticket.Funcionario));
+                }
+
+                return viewModels;
+            }
+            if (opt == 2)
+            {
+                var ticketsFechado = tickets.Where(t => t.Status == TicketStatusEnum.FECHADO);
+                foreach (var ticket in ticketsFechado)
+                {
+                    viewModels.Add(new TicketListMvcViewModel(ticket.Id, ticket.Titulo, ticket.Email, ticket.DataCriacao, ticket.IdFuncionario, ticket.Funcionario));
+                }
+
+                return viewModels;
             }
 
-            return viewModels;
+            return new List<TicketListMvcViewModel>();
         }
     }
 }
