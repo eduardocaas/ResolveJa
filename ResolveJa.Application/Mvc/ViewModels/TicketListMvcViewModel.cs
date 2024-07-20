@@ -9,7 +9,7 @@ namespace ResolveJa.Application.Mvc.ViewModels
 {
     public class TicketListMvcViewModel
     {
-        public TicketListMvcViewModel(int id, string titulo, string email, DateTime dataCriacao, int? idFuncionario, Funcionario? funcionario)
+        public TicketListMvcViewModel(int id, string titulo, string email, DateTime? dataCriacao, int? idFuncionario, Funcionario? funcionario)
         {
             Id = id;
             Titulo = titulo;
