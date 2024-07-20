@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient<IEmpresaMvcService, EmpresaMvcServiceImpl>();
 builder.Services.AddTransient<IUserMvcService, UserMvcServiceImpl>();
 builder.Services.AddTransient<IFuncionarioMvcService, FuncionarioMvcServiceImpl>();
+builder.Services.AddTransient<ITicketMvcService, TicketMvcServiceImpl>();
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("LocalConnectionTest");
