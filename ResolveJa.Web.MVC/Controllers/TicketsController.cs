@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ResolveJa.Application.Mvc.Services.Interfaces;
 using ResolveJa.Core.Entities;
+using ResolveJa.Core.Enums;
 using ResolveJa.Infrastructure.Data.Persistence;
 
 namespace ResolveJa.Web.MVC.Controllers
@@ -81,12 +82,13 @@ namespace ResolveJa.Web.MVC.Controllers
                 return NotFound();
             }
 
+            ModelState.Remove("Empresa");
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(ticket);
-                    await _context.SaveChangesAsync();
+                    _context.ChangeTracker.Clear();
+                    _ticketMvcService.Update(ticket);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
