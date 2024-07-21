@@ -12,66 +12,32 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Titulo" class="control-label"></label>
-                <input asp-for="Titulo" class="form-control" />
-                <span asp-validation-for="Titulo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Cpf" class="control-label"></label>
-                <input asp-for="Cpf" class="form-control" />
-                <span asp-validation-for="Cpf" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <select asp-for="Status" class="form-control"></select>
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Conteudo" class="control-label"></label>
-                <input asp-for="Conteudo" class="form-control" />
-                <span asp-validation-for="Conteudo" class="text-danger"></span>
-            </div>
+            
             <div class="form-group">
                 <label asp-for="Resposta" class="control-label"></label>
-                <input asp-for="Resposta" class="form-control" />
+                <textarea asp-for="Resposta" class="form-control"></textarea>
                 <span asp-validation-for="Resposta" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="DataCriacao" class="control-label"></label>
-                <input asp-for="DataCriacao" class="form-control" />
-                <span asp-validation-for="DataCriacao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataFechamento" class="control-label"></label>
-                <input asp-for="DataFechamento" class="form-control" />
-                <span asp-validation-for="DataFechamento" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdEmpresa" class="control-label"></label>
-                <input asp-for="IdEmpresa" class="form-control" />
-                <span asp-validation-for="IdEmpresa" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdFuncionario" class="control-label"></label>
-                <input asp-for="IdFuncionario" class="form-control" />
-                <span asp-validation-for="IdFuncionario" class="text-danger"></span>
-            </div>
             <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Titulo" />
+            <input type="hidden" asp-for="Cpf" />
+            <input type="hidden" asp-for="Email" />
+            <input type="hidden" asp-for="Status" />
+            <input type="hidden" asp-for="Conteudo" />
+            <input type="hidden" asp-for="DataCriacao" />
+            <input type="hidden" asp-for="Empresa"/>
+            <input type="hidden" asp-for="IdEmpresa" />
+            <input type="hidden" asp-for="IdFuncionario" />
+            <hr/>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Salvar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">RETORNAR</a>
 </div>
 
 @section Scripts {
