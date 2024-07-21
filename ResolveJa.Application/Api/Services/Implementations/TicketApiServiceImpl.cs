@@ -65,12 +65,5 @@ namespace ResolveJa.Application.Api.Services.Implementations
             return ticketDetails;
         }
 
-        public Task<Ticket> Update(Ticket ticket)
-        {
-            ticket.DataFechamento = DateTime.Now;
-            ticket.Status = TicketStatusEnum.FECHADO;
-            _context.Update(ticket);
-            _context.SaveChangesAsync();
-        }
     }
 }
