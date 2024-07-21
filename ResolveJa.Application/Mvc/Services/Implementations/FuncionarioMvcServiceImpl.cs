@@ -39,6 +39,16 @@ namespace ResolveJa.Application.Mvc.Services.Implementations
             return funcionario;
         }
 
+        public Task<List<Funcionario>> GetAll(int idEmpresa)
+        {
+            var funcionarios = _context.Funcionario
+                .AsNoTracking()
+                .Where(f => f.IdEmpresa == idEmpresa)
+                .ToListAsync();
+
+            return funcionarios;
+        }
+
         public async Task<int> GetIdEmpresa(string email)
         {
             var idEmpresa = await _context.Funcionario
