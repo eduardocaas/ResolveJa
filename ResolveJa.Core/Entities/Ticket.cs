@@ -23,7 +23,7 @@ namespace ResolveJa.Core.Entities
         }
 
         public string Titulo { get; set; }
-        [CpfValidation(errorMessage: "Insira um CPF válido")]
+        //[CpfValidation(errorMessage: "Insira um CPF válido")]
         public string Cpf { get; set; }
         public string Email { get; set; }
         public TicketStatusEnum Status { get; set; }
