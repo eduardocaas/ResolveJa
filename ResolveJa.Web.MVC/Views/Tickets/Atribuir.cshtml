@@ -1,0 +1,48 @@
+﻿@model ResolveJa.Core.Entities.Ticket
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Ticket</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="IdFuncionario" class="control-label"></label>
+                
+                <span asp-validation-for="Resposta" class="text-danger"></span>
+            </div>
+            
+
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Titulo" />
+            <input type="hidden" asp-for="Cpf" />
+            <input type="hidden" asp-for="Email" />
+            <input type="hidden" asp-for="Status" />
+            <input type="hidden" asp-for="Conteudo" />
+            <input type="hidden" asp-for="Resposta" />
+            <input type="hidden" asp-for="DataCriacao" />
+            <input type="hidden" asp-for="Empresa"/>
+            <input type="hidden" asp-for="IdEmpresa" />
+            <input type="hidden" asp-for="IdFuncionario" />
+            <hr/>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">RETORNAR</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
