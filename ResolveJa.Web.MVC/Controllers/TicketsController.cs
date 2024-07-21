@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ResolveJa.Application.Mvc.Services.Interfaces;
+using ResolveJa.Application.Mvc.ViewModels;
 using ResolveJa.Core.Entities;
 using ResolveJa.Core.Enums;
 using ResolveJa.Infrastructure.Data.Persistence;
@@ -103,6 +104,30 @@ namespace ResolveJa.Web.MVC.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(ticket);
+        }
+
+        // GET: Tickets/Edit/5
+        public async Task<IActionResult> Atribuir(int? id)
+        {
+            if (id == null || _context.Tickets == null)
+            {
+                return NotFound();
+            }
+
+            var email = User.Identity.Name;
+            var idEmpresa = await _funcionarioMvcService.GetIdEmpresa(email);
+            var funcionarios = await _funcionarioMvcService.GetAll(idEmpresa);
+
+            TicketAtribuirMvcViewModel viewModel = new TicketAtribuirMvcViewModel();
+
+            viewModel.Funcionarios = funcionarios;
+            viewModel.Ticket = await _context.Ticket.FirstOrDefaultAsync(t => t.Id == id);
+
+            if (viewModel.Ticket == null)
+            {
+                return NotFound();
+            }
+            return View(viewModel);
         }
 
         private bool TicketExists(int id)
