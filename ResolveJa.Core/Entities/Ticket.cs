@@ -1,6 +1,7 @@
 ﻿using ResolveJa.Core.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,7 @@ namespace ResolveJa.Core.Entities
 
         public int IdEmpresa { get; set; }
         public Empresa Empresa { get; set; }
+        [Display(Name = "Nome do Funcionário")]
         public int? IdFuncionario { get; set; }
         public Funcionario? Funcionario { get; set; }
 
