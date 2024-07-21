@@ -86,9 +86,8 @@ namespace ResolveJa.Web.MVC.Controllers
             if (ModelState.IsValid)
             {
                 try
-                {
-                    _context.ChangeTracker.Clear();
-                    _ticketMvcService.Update(ticket);
+                { 
+                    await _ticketMvcService.Update(ticket);
                 }
                 catch (DbUpdateConcurrencyException)
                 {

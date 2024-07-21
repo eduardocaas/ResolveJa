@@ -53,9 +53,9 @@ namespace ResolveJa.Application.Mvc.Services.Implementations
             return new List<TicketListMvcViewModel>();
         }
 
-        public async void Update(Ticket ticket)
+        public async Task Update(Ticket ticket)
         {
-           
+            _context.ChangeTracker.Clear();
             ticket.DataFechamento = DateTime.Now;
             ticket.Status = TicketStatusEnum.FECHADO;
             _context.Update(ticket);
