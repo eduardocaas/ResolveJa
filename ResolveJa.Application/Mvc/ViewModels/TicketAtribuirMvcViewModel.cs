@@ -10,6 +10,6 @@ namespace ResolveJa.Application.Mvc.ViewModels
     public class TicketAtribuirMvcViewModel
     {
         public List<Funcionario> Funcionarios { get; set; } = new List<Funcionario>();
-        public Ticket Ticket { get; set; }
+        public Ticket? Ticket { get; set; }
     }
 }
