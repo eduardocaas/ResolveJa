@@ -9,6 +9,7 @@ using ResolveJa.Application.Api.InputModels;
 using ResolveJa.Application.Api.Services.Interfaces;
 using ResolveJa.Application.Api.ViewModels;
 using ResolveJa.Core.Entities;
+using ResolveJa.Core.Enums;
 using ResolveJa.Infrastructure.Data.Persistence;
 
 namespace ResolveJa.Application.Api.Services.Implementations
@@ -62,6 +63,14 @@ namespace ResolveJa.Application.Api.Services.Implementations
                 new TicketDetailsApiViewModel(ticket.Status, ticket.Email, ticket.Cpf, ticket.Conteudo, ticket.Resposta);
 
             return ticketDetails;
+        }
+
+        public Task<Ticket> Update(Ticket ticket)
+        {
+            ticket.DataFechamento = DateTime.Now;
+            ticket.Status = TicketStatusEnum.FECHADO;
+            _context.Update(ticket);
+            _context.SaveChangesAsync();
         }
     }
 }
