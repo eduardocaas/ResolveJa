@@ -131,6 +131,15 @@ namespace ResolveJa.Web.MVC.Controllers
             return View(viewModel);
         }
 
+        //POST: Tickets/Atribuir/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Atribuir(int id, [Bind("Ticket.Titulo,Ticket.Cpf,Ticket.Email,Ticket.Status,Ticket.Conteudo,Ticket.Resposta,Ticket.DataCriacao,Ticket.DataFechamento,Ticket.IdEmpresa,Ticket.IdFuncionario,Ticket.Id, Funcionarios")] TicketAtribuirMvcViewModel viewModel)
+        {
+
+        }
+        
+
         private bool TicketExists(int id)
         {
           return (_context.Tickets?.Any(e => e.Id == id)).GetValueOrDefault();
