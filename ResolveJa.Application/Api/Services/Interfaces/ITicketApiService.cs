@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ResolveJa.Application.Api.InputModels;
 using ResolveJa.Application.Api.ViewModels;
+using ResolveJa.Core.Entities;
 
 namespace ResolveJa.Application.Api.Services.Interfaces
 {
@@ -13,5 +14,6 @@ namespace ResolveJa.Application.Api.Services.Interfaces
         Task<int> Create(TicketCreateInputModel inputModel);
         Task<List<TicketListApiViewModel>> GetTickets(string cpf, string urlEmpresa);
         Task<TicketDetailsApiViewModel> GetTicket(int id);
+        Task<Ticket> Update(Ticket ticket);
     }
 }
