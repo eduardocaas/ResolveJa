@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ResolveJa.Application.Mvc.Services.Interfaces;
 using ResolveJa.Application.Mvc.ViewModels;
+using ResolveJa.Core.Entities;
 using ResolveJa.Core.Enums;
 using ResolveJa.Infrastructure.Data.Persistence;
 
@@ -50,6 +51,15 @@ namespace ResolveJa.Application.Mvc.Services.Implementations
             }
 
             return new List<TicketListMvcViewModel>();
+        }
+
+        public async void Update(Ticket ticket)
+        {
+           
+            ticket.DataFechamento = DateTime.Now;
+            ticket.Status = TicketStatusEnum.FECHADO;
+            _context.Update(ticket);
+            await _context.SaveChangesAsync();
         }
     }
 }
