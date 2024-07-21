@@ -106,7 +106,8 @@ namespace ResolveJa.Web.MVC.Controllers
             return View(ticket);
         }
 
-        // GET: Tickets/Edit/5
+        // GET: Tickets/Atribuir/5
+        [Authorize(Roles = "Gestor")]
         public async Task<IActionResult> Atribuir(int? id)
         {
             if (id == null || _context.Tickets == null)
