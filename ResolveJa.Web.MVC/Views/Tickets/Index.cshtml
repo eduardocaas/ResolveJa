@@ -40,7 +40,15 @@
                 @Html.DisplayFor(modelItem => item.DataCriacao)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Funcionario)
+                @if (item.Funcionario == null)
+                {
+                    <text>NÃO ATRIBUÍDO</text>
+                }
+                @if (item.Funcionario != null)
+                {
+                    @Html.DisplayFor(modelItem => item.Funcionario)
+                }
+               
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
