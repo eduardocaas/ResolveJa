@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -134,9 +135,33 @@ namespace ResolveJa.Web.MVC.Controllers
         //POST: Tickets/Atribuir/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Atribuir(int id, [Bind("Ticket.Titulo,Ticket.Cpf,Ticket.Email,Ticket.Status,Ticket.Conteudo,Ticket.Resposta,Ticket.DataCriacao,Ticket.DataFechamento,Ticket.IdEmpresa,Ticket.IdFuncionario,Ticket.Id, Funcionarios")] TicketAtribuirMvcViewModel viewModel)
+        public async Task<IActionResult> Atribuir(int id, [Bind("Ticket.Titulo,Ticket.Cpf,Ticket.Email,Ticket.Status,Ticket.Conteudo,Ticket.Resposta,Ticket.DataCriacao,Ticket.DataFechamento,Ticket.IdEmpresa,Ticket.IdFuncionario,Ticket.Id")] TicketAtribuirMvcViewModel viewModel)
         {
+            if (id != viewModel.Ticket.Id)
+            {
+                return NotFound();
+            }
 
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _ticketMvcService.Update(viewModel.Ticket);
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!TicketExists(viewModel.Ticket.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(viewModel.Ticket);
         }
         
 
