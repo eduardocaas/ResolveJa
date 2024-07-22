@@ -22,6 +22,11 @@ namespace ResolveJa.Application.Mvc.Services.Implementations
             _context = context;
         }
 
+        public Task Atribuir(Ticket ticket)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<List<TicketListMvcViewModel>> GetAll(int idEmpresa, int opt)
         {
             // OPT 1 == TICKETS ABERTOS, OPT 2 == TICKETS FECHADO
