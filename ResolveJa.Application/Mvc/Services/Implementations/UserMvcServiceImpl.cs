@@ -30,8 +30,8 @@ namespace ResolveJa.Application.Mvc.Services.Implementations
 
             Guid guid = Guid.NewGuid();
             identityGestor.Id = guid.ToString();
-            identityGestor.UserName = model.Empresa.Url.ToString() + "@email.com";
-            identityGestor.Email = model.Empresa.Url.ToString() + "@email.com";
+            identityGestor.UserName = model.Empresa.Url.ToString() + "@resolveja.com";
+            identityGestor.Email = model.Empresa.Url.ToString() + "@resolveja.com";
             //identityGestor.NormalizedUserName = (model.Empresa.Url.ToString() + "@email.com");
 
             await _context.Users.AddAsync(identityGestor);

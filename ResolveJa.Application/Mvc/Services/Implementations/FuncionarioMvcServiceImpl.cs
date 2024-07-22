@@ -73,7 +73,7 @@ namespace ResolveJa.Application.Mvc.Services.Implementations
             Empresa? empresa = _context.Empresa.FirstOrDefault(e => e.Url == model.Empresa.Url.ToString());
 
             funcionario.Nome = model.Empresa.Url.ToString();
-            funcionario.Email = model.Empresa.Url.ToString() + "@email.com";
+            funcionario.Email = model.Empresa.Url.ToString() + "@resolveja.com";
             funcionario.Empresa = empresa;
             funcionario.IdEmpresa = empresa.Id;
 
