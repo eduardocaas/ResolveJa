@@ -146,7 +146,7 @@ namespace ResolveJa.Web.MVC.Controllers
             {
                 try
                 {
-                    await _ticketMvcService.Update(viewModel.Ticket);
+                    await _ticketMvcService.Atribuir(viewModel.Ticket);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
