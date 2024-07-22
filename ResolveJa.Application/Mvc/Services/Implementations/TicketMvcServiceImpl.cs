@@ -55,6 +55,15 @@ namespace ResolveJa.Application.Mvc.Services.Implementations
 
                 return viewModels;
             }
+            if (opt == 3)
+            {
+                foreach (var ticket in tickets)
+                {
+                    viewModels.Add(new TicketListMvcViewModel(ticket.Id, ticket.Titulo, ticket.Email, ticket.DataCriacao, ticket.IdFuncionario, ticket.Funcionario));
+                }
+
+                return viewModels;
+            }
 
             return new List<TicketListMvcViewModel>();
         }
