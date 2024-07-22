@@ -48,14 +48,28 @@
         </dd>
     </dl>
     <div>
-        <a asp-action="Edit" style="font-size: 22px;" asp-route-id="@Model?.Id">RESPONDER</a> |
+        @if (ViewData["Status"].Equals(0))
+        {
+            <a asp-action="Edit" style="font-size: 22px; text-decoration: none;" asp-route-id="@Model?.Id">RESPONDER</a>
+        }
+        
         @if (User.IsInRole("Gestor"))
         {
-            <a asp-action="Atribuir" style="font-size: 22px;" asp-route-id="@Model?.Id">ATRIBUIR</a>
+            <span style="font-size: 22px;"> | </span>
+            <a asp-action="Atribuir" style="font-size: 22px; text-decoration: none;" asp-route-id="@Model?.Id">ATRIBUIR</a>
         }
     </div>
 </div>
 <div>
     <hr/>
-    <a asp-action="Index">RETORNAR</a>
+    @if (ViewData["Status"].Equals(0))
+    {
+        <a asp-action="Index" asp-route-status=1>RETORNAR</a>
+    }
+    
+    @if (ViewData["Status"].Equals(1))
+    {
+        <a asp-action="Index" asp-route-status=2>RETORNAR</a>
+    }
+    
 </div>
