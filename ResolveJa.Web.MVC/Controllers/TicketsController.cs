@@ -36,10 +36,12 @@ namespace ResolveJa.Web.MVC.Controllers
             var idEmpresa = await _funcionarioMvcService.GetIdEmpresa(email);
             if (status == 1)
             {
+                ViewData["TitleTicket"] = "Tickets (ABERTO)";
                 return View(await _ticketMvcService.GetAll(idEmpresa, 1));
             }
             if (status == 2)
             {
+                ViewData["TitleTicket"] = "Tickets (FECHADO)";
                 return View(await _ticketMvcService.GetAll(idEmpresa, 2));
             }
             return View(await _ticketMvcService.GetAll(idEmpresa, 3));
@@ -55,6 +57,13 @@ namespace ResolveJa.Web.MVC.Controllers
 
             var ticket = await _context.Tickets
                 .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (ticket.Status == TicketStatusEnum.ABERTO)
+                ViewData["Status"] = 0;
+
+            if (ticket.Status == TicketStatusEnum.FECHADO)
+                ViewData["Status"] = 1;
+
             if (ticket == null)
             {
                 return NotFound();
@@ -80,8 +89,6 @@ namespace ResolveJa.Web.MVC.Controllers
         }
 
         // POST: Tickets/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Titulo,Cpf,Email,Status,Conteudo,Resposta,DataCriacao,DataFechamento,IdEmpresa,IdFuncionario,Id")] Ticket ticket)
@@ -109,7 +116,7 @@ namespace ResolveJa.Web.MVC.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", new { status = 2 });
             }
             return View(ticket);
         }
