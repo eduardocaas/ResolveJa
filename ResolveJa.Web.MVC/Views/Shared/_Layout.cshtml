@@ -31,13 +31,25 @@
                         @if (User.IsInRole("Funcionario"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Tickets" asp-action="Index">Tickets (ABERTO)</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Tickets" asp-action="Index" asp-route-status="1">Tickets (ABERTO)</a>
                             </li>
                         }   
                         @if (User.IsInRole("Gestor"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Tickets" asp-action="Index">Tickets (ABERTO)</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Tickets" asp-action="Index" asp-route-status="1">Tickets (ABERTO)</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Funcionario"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Tickets" asp-action="Index" asp-route-status="2">Tickets (FECHADO)</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("Gestor"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Tickets" asp-action="Index" asp-route-status="2">Tickets (FECHADO)</a>
                             </li>
                         }
                         @if (User.IsInRole("Gestor"))

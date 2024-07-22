@@ -30,12 +30,19 @@ namespace ResolveJa.Web.MVC.Controllers
         }
 
         // GET: Tickets
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int status)
         {
             var email = User.Identity.Name;
             var idEmpresa = await _funcionarioMvcService.GetIdEmpresa(email);
-
-            return View(await _ticketMvcService.GetAll(idEmpresa, 1));
+            if (status == 1)
+            {
+                return View(await _ticketMvcService.GetAll(idEmpresa, 1));
+            }
+            if (status == 2)
+            {
+                return View(await _ticketMvcService.GetAll(idEmpresa, 2));
+            }
+            return View(await _ticketMvcService.GetAll(idEmpresa, 3));
         }
 
         // GET: Tickets/Details/5
