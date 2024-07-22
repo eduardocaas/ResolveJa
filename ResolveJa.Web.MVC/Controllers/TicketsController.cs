@@ -162,6 +162,21 @@ namespace ResolveJa.Web.MVC.Controllers
             }
             return View(viewModel.Ticket);
         }
+
+        [Authorize(Roles = "Gestor")]
+        public async Task<IActionResult> Report()
+        {
+            var email = User.Identity.Name;
+            var idEmpresa = await _funcionarioMvcService.GetIdEmpresa(email);
+
+            var ticketsAberto = await _ticketMvcService.GetAll(idEmpresa, 1);
+            var ticketsFechado = await _ticketMvcService.GetAll(idEmpresa, 2);
+
+            ViewData["TicketsAberto"] = ticketsAberto.Count;
+            ViewData["TicketsFechado"] = ticketsFechado.Count;
+
+            return View();
+        }
         
 
         private bool TicketExists(int id)
