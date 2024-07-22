@@ -22,9 +22,10 @@ namespace ResolveJa.Application.Mvc.Services.Implementations
             _context = context;
         }
 
-        public Task Atribuir(Ticket ticket)
+        public async Task Atribuir(Ticket ticket)
         {
-            throw new NotImplementedException();
+            _context.Ticket.Update(ticket);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<List<TicketListMvcViewModel>> GetAll(int idEmpresa, int opt)
