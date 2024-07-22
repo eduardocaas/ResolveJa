@@ -120,10 +120,9 @@ namespace ResolveJa.Web.MVC.Controllers
             var idEmpresa = await _funcionarioMvcService.GetIdEmpresa(email);
             var funcionarios = await _funcionarioMvcService.GetAll(idEmpresa);
 
-            TicketAtribuirMvcViewModel viewModel = new TicketAtribuirMvcViewModel();
+            var ticket = await _context.Ticket.FirstOrDefaultAsync(t => t.Id == id);
 
-            viewModel.Funcionarios = funcionarios;
-            viewModel.Ticket = await _context.Ticket.FirstOrDefaultAsync(t => t.Id == id);
+            TicketAtribuirMvcViewModel viewModel = new TicketAtribuirMvcViewModel(funcionarios, ticket);
 
             if (viewModel.Ticket == null)
             {
@@ -137,10 +136,10 @@ namespace ResolveJa.Web.MVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Atribuir(int id, [Bind("Ticket.Titulo,Ticket.Cpf,Ticket.Email,Ticket.Status,Ticket.Conteudo,Ticket.Resposta,Ticket.DataCriacao,Ticket.DataFechamento,Ticket.IdEmpresa,Ticket.IdFuncionario,Ticket.Id")] TicketAtribuirMvcViewModel viewModel)
         {
-            if (id != viewModel.Ticket.Id)
+            /*if (id != viewModel.Ticket.Id)
             {
                 return NotFound();
-            }
+            }*/
 
             if (ModelState.IsValid)
             {
