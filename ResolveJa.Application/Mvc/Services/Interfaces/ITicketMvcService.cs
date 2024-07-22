@@ -12,5 +12,6 @@ namespace ResolveJa.Application.Mvc.Services.Interfaces
     {
         Task<List<TicketListMvcViewModel>> GetAll(int idEmpresa, int opt);
         Task Update(Ticket ticket);
+        Task Atribuir(Ticket ticket);
     }
 }
