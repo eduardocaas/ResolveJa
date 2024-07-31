@@ -2,3 +2,8 @@
     font-family: 'Poppins';
     src: url(assets/font/Poppins/Poppins-Regular.ttf) format('truetype');
 }
+
+body {
+  font-family: 'Poppins';
+  margin: 0px;
+}
