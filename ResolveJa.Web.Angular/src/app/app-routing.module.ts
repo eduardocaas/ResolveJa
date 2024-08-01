@@ -5,7 +5,7 @@ import { NavComponent } from './components/nav/nav.component';
 
 const routes: Routes = [
   {
-    path: '', component: NavComponent
+    path: ':empresa', component: NavComponent
   }
 ];
 
