@@ -1,4 +1,5 @@
-﻿using ResolveJa.Core.Entities;
+﻿using ResolveJa.Application.Api.ViewModels;
+using ResolveJa.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace ResolveJa.Application.Api.Services.Interfaces
     public interface IEmpresaApiService
     {
         Task<Empresa?> GetEmpresa(string url);
+        Task<EmpresaUrlApiViewModel> GetUrl(string url);
         Task<int?> GetId(string url);
     }
 }
