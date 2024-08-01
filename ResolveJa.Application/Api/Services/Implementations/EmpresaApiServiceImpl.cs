@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Opw.HttpExceptions;
 using ResolveJa.Application.Api.Services.Interfaces;
+using ResolveJa.Application.Api.ViewModels;
 using ResolveJa.Core.Entities;
 using ResolveJa.Infrastructure.Data.Persistence;
 
@@ -36,6 +37,11 @@ namespace ResolveJa.Application.Api.Services.Implementations
             if (id == null || id == 0)
                 throw new NotFoundException($"Empresa com URL: {url} não encontrada!");
             return id;
+        }
+
+        public Task<EmpresaUrlApiViewModel> GetUrl(string url)
+        {
+            throw new NotImplementedException();
         }
     }
 }
