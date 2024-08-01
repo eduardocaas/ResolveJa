@@ -8,5 +8,11 @@ namespace ResolveJa.Application.Api.ViewModels
 {
     public struct EmpresaUrlApiViewModel
     {
+        public EmpresaUrlApiViewModel(string url)
+        {
+            Url = url;
+        }
+
+        public string Url { get; set; }
     }
 }
