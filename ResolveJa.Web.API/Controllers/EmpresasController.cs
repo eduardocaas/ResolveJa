@@ -2,7 +2,10 @@
 
 namespace ResolveJa.Web.API.Controllers
 {
+    [ApiController]
+    [Route("api/[controller]")]
     public class EmpresasController : ControllerBase
     {
+        
     }
 }
