@@ -39,7 +39,7 @@ namespace ResolveJa.Application.Api.Services.Implementations
             return id;
         }
 
-        public async Task<EmpresaUrlApiViewModel> GetUrl(string url)
+        public async Task<EmpresaUrlApiViewModel> GetEmpresaViewModel(string url)
         {
             Empresa? empresa = await _context.Empresa.FirstOrDefaultAsync(e => e.Url == url);
 
