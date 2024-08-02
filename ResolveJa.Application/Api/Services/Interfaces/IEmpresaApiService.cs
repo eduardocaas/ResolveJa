@@ -11,7 +11,7 @@ namespace ResolveJa.Application.Api.Services.Interfaces
     public interface IEmpresaApiService
     {
         Task<Empresa?> GetEmpresa(string url);
-        Task<EmpresaUrlApiViewModel> GetUrl(string url);
+        Task<EmpresaUrlApiViewModel> GetEmpresaViewModel(string url);
         Task<int?> GetId(string url);
     }
 }
