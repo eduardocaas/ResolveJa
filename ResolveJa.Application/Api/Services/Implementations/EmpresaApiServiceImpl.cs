@@ -46,7 +46,7 @@ namespace ResolveJa.Application.Api.Services.Implementations
             if (empresa == null)
                 throw new NotFoundException($"Empresa com URL: {url} não encontrada!");
 
-            return new EmpresaUrlApiViewModel(empresa.Url);
+            return new EmpresaUrlApiViewModel(empresa.Url, empresa.Nome);
         }
     }
 }
