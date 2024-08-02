@@ -21,6 +21,9 @@ namespace ResolveJa.Web.API.Controllers
 
         [HttpPost]
         [Consumes(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> Create(
             [FromBody] TicketCreateInputModel inputModel)
         {
@@ -49,6 +52,9 @@ namespace ResolveJa.Web.API.Controllers
 
         [HttpGet]
         [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetTickets(
             [FromQuery] string cpf, 
             [FromQuery] string urlEmpresa)
@@ -79,6 +85,9 @@ namespace ResolveJa.Web.API.Controllers
         [HttpGet]
         [Route("{id}")]
         [Produces(MediaTypeNames.Application.Json)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetTicket(
             [FromRoute] int id)
         {
@@ -104,6 +113,5 @@ namespace ResolveJa.Web.API.Controllers
                 });
             }
         }
-
     }
 }
