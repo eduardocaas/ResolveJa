@@ -16,7 +16,7 @@ namespace ResolveJa.Web.API.Controllers
         }
 
         [HttpGet]
-        [Route("{url:string}")]
+        [Route("{url}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]      
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
