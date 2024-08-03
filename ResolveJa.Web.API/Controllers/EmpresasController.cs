@@ -25,7 +25,8 @@ namespace ResolveJa.Web.API.Controllers
         {
             try
             {
-
+                var viewModel = await _empresaApiService.GetEmpresaViewModel(url);
+                return Ok(viewModel);
             }
             catch (NotFoundException nfException)
             {
