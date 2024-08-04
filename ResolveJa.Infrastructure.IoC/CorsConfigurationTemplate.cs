@@ -20,6 +20,15 @@ namespace ResolveJa.Infrastructure.IoC
                 });
         }
 
-
+        public static Action<CorsOptions> ConfigureServer(string policy)
+        {
+            return options => options.AddPolicy(name: policy,
+                policyBuilder =>
+                {
+                    policyBuilder.WithOrigins("https://SERVER_ADDRESS")
+                    .AllowAnyHeader()
+                    .WithMethods("GET", "POST");
+                });
+        }
     }
 }
