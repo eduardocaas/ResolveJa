@@ -3,6 +3,8 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+ResolveJa.Infrastructure.IoC/CorsConfiguration.cs
+
 # dotenv files
 .env
 
