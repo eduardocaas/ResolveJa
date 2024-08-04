@@ -18,9 +18,16 @@ export class NavComponent implements OnInit {
     nome: 'undefined'
   }
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute, private service: EmpresaService) { }
 
   ngOnInit(): void {
     this.empresaUrl = this.activatedRoute.snapshot.paramMap.get('empresa');
+    this.getByUrl();
+  }
+
+  getByUrl() {
+    this.service.getByUrl(this.empresaUrl).subscribe(response => {
+      this.empresa = response;
+    })
   }
 }
