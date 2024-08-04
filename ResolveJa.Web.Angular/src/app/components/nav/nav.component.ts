@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EmpresaService } from '../../services/empresa.service';
+import { Empresa } from '../../models/empresa.model';
 
 @Component({
   selector: 'app-nav',
@@ -10,12 +11,16 @@ import { EmpresaService } from '../../services/empresa.service';
 })
 export class NavComponent implements OnInit {
 
-  empresaName: any;
+  empresaUrl: any;
+
+  empresa: Empresa = {
+    url: 'undefined',
+    nome: 'undefined'
+  }
 
   constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.empresaName = this.activatedRoute.snapshot.paramMap.get('empresa');
+    this.empresaUrl = this.activatedRoute.snapshot.paramMap.get('empresa');
   }
-
 }
