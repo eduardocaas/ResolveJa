@@ -13,7 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddCors(CorsConfiguration.Configure(allowLocalOrigins));
+builder.Services.AddCors(CorsConfiguration.ConfigureLocal(allowLocalOrigins));
 
 // Injeção de serviços
 builder.Services.AddTransient<IEmpresaApiService, EmpresaApiServiceImpl>();
