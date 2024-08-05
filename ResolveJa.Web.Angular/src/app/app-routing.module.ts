@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { NavComponent } from './components/nav/nav.component';
+import { EmpresaComponent } from './components/empresa/empresa.component';
 
 const routes: Routes = [
   {
-    path: ':empresa', component: NavComponent
+    path: '', component: NavComponent, children: [
+      {path: ':empresa', component: EmpresaComponent}
+    ]
   }
 ];
 
