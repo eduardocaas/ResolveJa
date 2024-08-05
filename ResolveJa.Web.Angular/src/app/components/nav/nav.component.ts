@@ -19,23 +19,11 @@ export class NavComponent implements OnInit {
   }
 
   constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private service: EmpresaService)
+    private router: Router
+  )
   { }
 
   ngOnInit(): void {
-    this.empresaUrl = this.activatedRoute.snapshot.paramMap.get('empresa');
-    this.loadContent();
-  }
-
-  loadContent(): void {
-    this.service.getByUrl(this.empresaUrl).subscribe(response => {
-      this.empresa = response;
-    });
-
-    if (this.empresa.url == 'undefined') {
-      this.router.navigate(['']);
-    }
+    this.router.navigate(['']);
   }
 }
