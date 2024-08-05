@@ -6,7 +6,8 @@ import { EmpresaService } from '../../services/empresa.service';
 @Component({
   selector: 'app-empresa',
   templateUrl: './empresa.component.html',
-  styleUrls: ['./empresa.component.css']
+  styleUrls: ['./empresa.component.css'],
+  providers: [EmpresaService]
 })
 export class EmpresaComponent {
 
