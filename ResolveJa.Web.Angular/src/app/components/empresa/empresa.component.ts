@@ -22,4 +22,9 @@ export class EmpresaComponent {
     private activatedRoute: ActivatedRoute,
     private service: EmpresaService) { }
 
+  ngOnInit(): void {
+    this.empresaUrl = this.activatedRoute.snapshot.paramMap.get('empresa');
+
+  }
+
 }
