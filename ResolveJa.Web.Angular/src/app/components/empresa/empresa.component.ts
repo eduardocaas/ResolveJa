@@ -24,7 +24,16 @@ export class EmpresaComponent {
 
   ngOnInit(): void {
     this.empresaUrl = this.activatedRoute.snapshot.paramMap.get('empresa');
-
+    this.loadContent();
   }
 
+  loadContent(): void {
+    this.service.getByUrl(this.empresaUrl).subscribe(response => {
+      this.empresa = response;
+    });
+
+    if (this.empresa.url == 'undefined') {
+      this.router.navigate(['']);
+    }
+  }
 }
