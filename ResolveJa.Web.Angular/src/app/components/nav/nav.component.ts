@@ -6,17 +6,9 @@ import { Empresa } from '../../models/empresa.model';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css'],
-  providers: [EmpresaService]
+  styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-
-  empresaUrl: any;
-
-  empresa: Empresa = {
-    url: 'undefined',
-    nome: 'undefined'
-  }
 
   constructor(
     private router: Router
