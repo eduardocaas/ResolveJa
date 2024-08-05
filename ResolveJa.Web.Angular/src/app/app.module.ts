@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 import { NavComponent } from './components/nav/nav.component';
+import { EmpresaComponent } from './components/empresa/empresa.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent
+    NavComponent,
+    EmpresaComponent
   ],
   imports: [
     BrowserModule,
