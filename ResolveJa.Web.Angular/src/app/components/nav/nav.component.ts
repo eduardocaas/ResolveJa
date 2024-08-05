@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmpresaService } from '../../services/empresa.service';
 import { Empresa } from '../../models/empresa.model';
 
@@ -18,7 +18,11 @@ export class NavComponent implements OnInit {
     nome: 'undefined'
   }
 
-  constructor(private activatedRoute: ActivatedRoute, private service: EmpresaService) { }
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private service: EmpresaService)
+  { }
 
   ngOnInit(): void {
     this.empresaUrl = this.activatedRoute.snapshot.paramMap.get('empresa');
