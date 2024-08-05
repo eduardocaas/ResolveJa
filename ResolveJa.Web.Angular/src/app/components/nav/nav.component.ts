@@ -26,12 +26,16 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     this.empresaUrl = this.activatedRoute.snapshot.paramMap.get('empresa');
-    this.getByUrl();
+    this.loadContent();
   }
 
-  getByUrl() {
+  loadContent(): void {
     this.service.getByUrl(this.empresaUrl).subscribe(response => {
       this.empresa = response;
-    })
+    });
+
+    if (this.empresa.url == 'undefined') {
+      this.router.navigate(['']);
+    }
   }
 }
