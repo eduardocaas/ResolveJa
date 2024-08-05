@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Empresa } from '../../models/empresa.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EmpresaService } from '../../services/empresa.service';
 
 @Component({
   selector: 'app-empresa',
@@ -6,5 +9,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./empresa.component.css']
 })
 export class EmpresaComponent {
+
+  empresaUrl: any;
+
+  empresa: Empresa = {
+    url: 'undefined',
+    nome: 'undefined'
+  }
+
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private service: EmpresaService) { }
 
 }
