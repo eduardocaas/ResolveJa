@@ -8,12 +8,14 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { NavComponent } from './components/nav/nav.component';
 import { EmpresaComponent } from './components/empresa/empresa.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    EmpresaComponent
+    EmpresaComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
