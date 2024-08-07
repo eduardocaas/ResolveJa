@@ -29,12 +29,13 @@ export class EmpresaComponent {
   }
 
   loadContent(): void {
-    this.service.getByUrl(this.empresaUrl).subscribe(response => {
-      this.empresa = response;
-    });
-
-    if (this.empresa.url == 'undefined') {
-      this.router.navigate(['']);
-    }
+    this.service.getByUrl(this.empresaUrl).subscribe(
+      (result) => {
+        this.empresa = result;
+      },
+      (error) => {
+        this.router.navigate(['']);
+      }, 
+    );
   }
 }
