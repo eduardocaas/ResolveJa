@@ -11,6 +11,7 @@ import { EmpresaService } from '../../services/empresa.service';
 })
 export class EmpresaComponent {
 
+  navTitle: any;
   empresaUrl: any;
 
   empresa: Empresa = {
@@ -24,7 +25,9 @@ export class EmpresaComponent {
     private service: EmpresaService) { }
 
   ngOnInit(): void {
+    this.navTitle = document.getElementById('navTitle');
     this.empresaUrl = this.activatedRoute.snapshot.paramMap.get('empresa');
+
     this.loadContent();
   }
 
@@ -32,9 +35,10 @@ export class EmpresaComponent {
     this.service.getByUrl(this.empresaUrl).subscribe(
       (result) => {
         this.empresa = result;
+        this.navTitle.innerText = this.empresa.nome;
       },
       (error) => {
-        this.router.navigate(['']);
+        this.router.navigate(['home']);
       }, 
     );
   }
