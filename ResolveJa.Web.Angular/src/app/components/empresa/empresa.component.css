@@ -7,8 +7,22 @@
 
 .box:nth-of-type(1) {
   width: 57%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #5C6373;
 }
+
+  .box:nth-of-type(1) button {
+    width: 325px;
+    height: 145px;
+    font-size: 1.7rem;
+    font-weight: 600;
+    border: 0;
+    border-radius: 15px;
+    color: #D9D9D9;
+    background-color: #2C3140;
+  }
 
 .box:nth-of-type(2) {
   width: 43%;
