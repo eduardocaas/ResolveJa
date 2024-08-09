@@ -28,3 +28,13 @@
   width: 43%;
   background-color: #2C3140;
 }
+
+  .box:nth-of-type(2) p:nth-last-child(3) {
+    font-size: 1.5rem;
+    color: #D9D9D9;
+  }
+
+  .box:nth-of-type(2) p:nth-last-child(1) {
+    font-size: 1.2rem;
+    color: #D9D9D9;
+  }
