@@ -46,6 +46,8 @@
   .box:nth-of-type(2) input {
     width: 296px;
     height: 50px;
+    font-size: 1rem;
+    padding-left: 20px;
     margin-right: 50px;
     border: 0;
     border-radius: 8px;
