@@ -30,11 +30,43 @@
 }
 
   .box:nth-of-type(2) p:nth-last-child(3) {
-    font-size: 1.5rem;
+    text-align: center;
+    font-size: 1.7rem;
+    color: #D9D9D9;
+  }
+
+  .box:nth-of-type(2) div:nth-child(2) form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+  }
+
+  .box:nth-of-type(2) input {
+    width: 296px;
+    height: 50px;
+    margin-right: 50px;
+    border: 0;
+    border-radius: 8px;
+    color: #5C6373;
+    background-color: #D9D9D9;
+  }
+
+  .box:nth-of-type(2) button {
+    width: 300px;
+    height: 52px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border: 0;
+    border-radius: 8px;
+    background-color: #5C6373;
     color: #D9D9D9;
   }
 
   .box:nth-of-type(2) p:nth-last-child(1) {
+      margin-top: 30vh;
+    text-align: center;
     font-size: 1.2rem;
     color: #D9D9D9;
   }
