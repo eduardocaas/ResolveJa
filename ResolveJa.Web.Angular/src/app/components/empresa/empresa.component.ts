@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Empresa } from '../../models/empresa.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmpresaService } from '../../services/empresa.service';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-empresa',
@@ -9,15 +10,18 @@ import { EmpresaService } from '../../services/empresa.service';
   styleUrls: ['./empresa.component.css'],
   providers: [EmpresaService]
 })
-export class EmpresaComponent {
+export class EmpresaComponent implements OnInit {
 
   navTitle: any;
   empresaUrl: any;
+  cpf: any;
 
   empresa: Empresa = {
     url: 'undefined',
     nome: 'undefined'
   }
+
+  searchControl = new FormControl(null, [Validators.required, Validators.pattern("[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}")]);
 
   constructor(
     private router: Router,
@@ -39,7 +43,21 @@ export class EmpresaComponent {
       },
       (error) => {
         this.router.navigate(['home']);
-      }, 
+      },
     );
+  }
+
+  search(): void {
+    alert(this.cpf);
+  }
+
+  getErrorMessageSearch() {
+    if (this.searchControl.hasError('required')) {
+      return 'Você deve informar um CPF';
+    }
+    if (this.searchControl.hasError('pattern')) {
+      return 'Insira um formato válido';
+    }
+    return null;
   }
 }
