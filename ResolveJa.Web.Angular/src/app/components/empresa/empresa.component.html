@@ -10,6 +10,7 @@
                     <input type="text"
                            [formControl]="searchControl"
                            [(ngModel)]="cpf"
+                           mask="000.000.000-00"
                            placeholder="Digite aqui seu CPF" />
                     <span *ngIf="searchControl.invalid">{{getErrorMessageSearch()}}</span>
                 </div>
