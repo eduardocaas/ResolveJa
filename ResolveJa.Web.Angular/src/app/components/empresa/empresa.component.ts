@@ -14,7 +14,7 @@ export class EmpresaComponent implements OnInit {
 
   navTitle: any;
   empresaUrl: any;
-  cpf: any;
+  cpfSearch: any;
 
   empresa: Empresa = {
     url: 'undefined',
@@ -22,7 +22,7 @@ export class EmpresaComponent implements OnInit {
   }
 
   // Formcontrol para Form no Box Esquerdo
-  searchControl = new FormControl(null, [/*Validators.required, */ Validators.pattern("[0-9]{11}") /* Validators.pattern("[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}") */]);
+  searchControl = new FormControl(null, [Validators.required, Validators.pattern("[0-9]{11}") /* Validators.pattern("[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}") */]);
 
   constructor(
     private router: Router,
@@ -49,13 +49,17 @@ export class EmpresaComponent implements OnInit {
   }
 
   search(): void {
-    alert(this.cpf);
+    alert(this.cpfSearch);
+  }
+
+  validSearchFields(): boolean {
+    return this.searchControl.valid;
   }
 
   getErrorMessageSearch() {
-    /*if (this.searchControl.hasError('required')) {
+    if (this.searchControl.hasError('required')) {
       return 'Você deve informar um CPF';
-    }*/
+    }
     if (this.searchControl.hasError('pattern')) {
       return 'Você deve informar um CPF válido';
     }

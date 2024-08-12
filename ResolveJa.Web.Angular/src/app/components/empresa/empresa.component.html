@@ -9,13 +9,13 @@
                 <div>
                     <input type="text"
                            [formControl]="searchControl"
-                           [(ngModel)]="cpf"
+                           [(ngModel)]="cpfSearch"
                            mask="000.000.000-00"
                            placeholder="Digite aqui seu CPF" />
                     <span *ngIf="searchControl.invalid">{{getErrorMessageSearch()}}</span>
                 </div>
                 <div>
-                    <button (click)="search()">BUSCAR</button>
+                    <button (click)="search()" [disabled]="!validSearchFields()">BUSCAR</button>
                 </div>
             </form>        
         </div>
