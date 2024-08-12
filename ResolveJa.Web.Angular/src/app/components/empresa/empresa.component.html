@@ -5,14 +5,18 @@
     <div class="box">
         <p>Consulte aqui seus tickets</p>
         <div>
-           <form>
-               <div>
-                   <input type="text" id="inputCpfSearch" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" required placeholder="Digite aqui seu CPF" />
-               </div>
-               <div>
-                   <button type="submit">BUSCAR</button>
-               </div>
-           </form>
+            <form>
+                <div>
+                    <input type="text"
+                           [formControl]="searchControl"
+                           [(ngModel)]="cpf"
+                           placeholder="Digite aqui seu CPF" />
+                    <span *ngIf="searchControl.invalid">{{getErrorMessageSearch()}}</span>
+                </div>
+                <div>
+                    <button (click)="search()">BUSCAR</button>
+                </div>
+            </form>        
         </div>
         <div>
             <p>Você ainda não abriu nenhum ticket!</p>

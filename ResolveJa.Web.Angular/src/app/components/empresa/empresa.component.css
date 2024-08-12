@@ -36,14 +36,23 @@
   }
 
   .box:nth-of-type(2) div:nth-child(2) form { /* Segundo elemento - tag <form> - Box da esquerda */
+    height: 80px;
+    margin-top: 50px;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
-    height: 80px;
   }
 
-  .box:nth-of-type(2) input { /* tag <input> - dentro da tag <form> - Box da esquerda */
+    .box:nth-of-type(2) div:nth-child(2) form div:nth-child(1) { /* Segundo elemento - primeira tag <div> - dentro de tag <form> - Box da esquerda */
+      display: flex;
+      flex-direction: column;
+    }
+
+    .box:nth-of-type(2) div:nth-child(2) form div:nth-child(1) span { /* Segundo elemento - tag <span> - dentro da primeira tag <div> - dentro de tag <form> - Box da esquerda */
+      color: #c40000;
+    }
+
+  .box:nth-of-type(2) input { /* Segundo elemento - tag <input> - dentro da tag <form> - Box da esquerda */
     width: 296px;
     height: 50px;
     font-size: 1rem;
@@ -55,7 +64,7 @@
     background-color: #D9D9D9;
   }
 
-  .box:nth-of-type(2) button { /* tag <button> - dentro da tag <form> - Box da esquerda */
+  .box:nth-of-type(2) button { /* Segundo elemento - tag <button> - dentro da tag <form> - Box da esquerda */
     width: 300px;
     height: 52px;
     font-size: 1.3rem;
