@@ -58,7 +58,7 @@ export class EmpresaComponent implements OnInit {
 
   getErrorMessageSearch() {
     if (this.searchControl.hasError('required')) {
-      return 'Você deve informar um CPF';
+      return 'Você deve informar um CPF válido';
     }
     if (this.searchControl.hasError('pattern')) {
       return 'Você deve informar um CPF válido';

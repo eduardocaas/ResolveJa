@@ -12,7 +12,7 @@
                            [(ngModel)]="cpfSearch"
                            mask="000.000.000-00"
                            placeholder="Digite aqui seu CPF" />
-                    <span *ngIf="searchControl.invalid">{{getErrorMessageSearch()}}</span>
+                    <span *ngIf="searchControl.invalid && (searchControl.dirty || searchControl.touched)">{{getErrorMessageSearch()}}</span>
                 </div>
                 <div>
                     <button (click)="search()" [disabled]="!validSearchFields()">BUSCAR</button>
