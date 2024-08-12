@@ -3,12 +3,13 @@ import { Empresa } from '../../models/empresa.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmpresaService } from '../../services/empresa.service';
 import { FormControl, Validators } from '@angular/forms';
+import { TicketService } from '../../services/ticket.service';
 
 @Component({
   selector: 'app-empresa',
   templateUrl: './empresa.component.html',
   styleUrls: ['./empresa.component.css'],
-  providers: [EmpresaService]
+  providers: [EmpresaService, TicketService]
 })
 export class EmpresaComponent implements OnInit {
 
@@ -27,7 +28,8 @@ export class EmpresaComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private service: EmpresaService) { }
+    private empresaService: EmpresaService,
+    private ticketService: TicketService) { }
 
   ngOnInit(): void {
     this.navTitle = document.getElementById('navTitle');
@@ -40,7 +42,7 @@ export class EmpresaComponent implements OnInit {
 
   // Realiza busca por URL da empresa -> retorna a página da empresa caso URL exista
   loadContent(): void { 
-    this.service.getByUrl(this.empresaUrl).subscribe(
+    this.empresaService.getByUrl(this.empresaUrl).subscribe(
       (result) => {
         this.empresa = result;
         this.navTitle.innerText = this.empresa.nome;
