@@ -21,7 +21,8 @@ export class EmpresaComponent implements OnInit {
     nome: 'undefined'
   }
 
-  searchControl = new FormControl(null, [Validators.required, Validators.pattern("[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}")]);
+  // Formcontrol para Form no Box Esquerdo
+  searchControl = new FormControl(null, [/*Validators.required, */ Validators.pattern("[0-9]{11}") /* Validators.pattern("[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}") */]);
 
   constructor(
     private router: Router,
@@ -35,7 +36,7 @@ export class EmpresaComponent implements OnInit {
     this.loadContent();
   }
 
-  loadContent(): void {
+  loadContent(): void { // Realiza busca por URL da empresa -> retorna a página da empresa caso URL exista
     this.service.getByUrl(this.empresaUrl).subscribe(
       (result) => {
         this.empresa = result;
@@ -52,11 +53,11 @@ export class EmpresaComponent implements OnInit {
   }
 
   getErrorMessageSearch() {
-    if (this.searchControl.hasError('required')) {
+    /*if (this.searchControl.hasError('required')) {
       return 'Você deve informar um CPF';
-    }
+    }*/
     if (this.searchControl.hasError('pattern')) {
-      return 'Insira um formato válido';
+      return 'Você deve informar um CPF válido';
     }
     return null;
   }
