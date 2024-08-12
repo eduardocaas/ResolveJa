@@ -7,4 +7,8 @@ import { Injectable } from '@angular/core';
 export class TicketService {
 
   constructor(private http: HttpClient) { }
+
+  getSearch(url: string, urlEmpresa: string) {
+
+  }
 }
