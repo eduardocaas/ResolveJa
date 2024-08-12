@@ -13,10 +13,10 @@ import { FormControl, Validators } from '@angular/forms';
 export class EmpresaComponent implements OnInit {
 
   navTitle: any;
-  empresaUrl: any;
-  cpfSearch: any;
+  empresaUrl: any; // url - urlparam
+  cpfSearch: any; // ngModel
 
-  empresa: Empresa = {
+  empresa: Empresa = { // Model de 'Empresa'
     url: 'undefined',
     nome: 'undefined'
   }
@@ -31,12 +31,15 @@ export class EmpresaComponent implements OnInit {
 
   ngOnInit(): void {
     this.navTitle = document.getElementById('navTitle');
+    // Atribui valor de UrlParam -> ex: resolveja.com/EmpresaAbc <- 'EmpresaAbc' é o UrlParam
     this.empresaUrl = this.activatedRoute.snapshot.paramMap.get('empresa');
 
+    // Realiza consulta com UrlParam e realiza validação de Empresa
     this.loadContent();
   }
 
-  loadContent(): void { // Realiza busca por URL da empresa -> retorna a página da empresa caso URL exista
+  // Realiza busca por URL da empresa -> retorna a página da empresa caso URL exista
+  loadContent(): void { 
     this.service.getByUrl(this.empresaUrl).subscribe(
       (result) => {
         this.empresa = result;
@@ -48,14 +51,17 @@ export class EmpresaComponent implements OnInit {
     );
   }
 
+  // Função que realiza busca de Tickets -> box direito
   search(): void {
     alert(this.cpfSearch);
   }
 
+  // Validação de campos - box direito
   validSearchFields(): boolean {
     return this.searchControl.valid;
   }
 
+  // Mensagem de erro para campos inválidos -> box direito
   getErrorMessageSearch() {
     if (this.searchControl.hasError('required')) {
       return 'Você deve informar um CPF válido';
