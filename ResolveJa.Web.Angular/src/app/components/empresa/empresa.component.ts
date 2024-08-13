@@ -65,7 +65,7 @@ export class EmpresaComponent implements OnInit {
             this.toast.info(`Nenhum Ticket encontrado para o CPF: ${this.cpfSearch}`, 'Tickets');
           }
           else {
-
+            this.listTickets(result);
           }
         },
         (error) => {
@@ -74,7 +74,10 @@ export class EmpresaComponent implements OnInit {
       );
   }
 
-  
+  // Realiza criação de conteúdo HTML com Tickets
+  listTickets(tickts: any) {
+
+  }
 
   // Validação de campos - box direito
   validSearchFields(): boolean {
