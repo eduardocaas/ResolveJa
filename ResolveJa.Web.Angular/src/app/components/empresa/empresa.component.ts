@@ -61,13 +61,20 @@ export class EmpresaComponent implements OnInit {
       .getSearch(this.cpfSearch, this.empresaUrl)
       .subscribe(
         (result) => {
-          console.log(result);
+          if (result.length == 0) {
+            this.toast.info(`Nenhum Ticket encontrado para o CPF: ${this.cpfSearch}`, 'Tickets');
+          }
+          else {
+
+          }
         },
         (error) => {
-          console.log(error);
+          this.toast.error(error.message, 'Falha ao buscar Tickets');
         }
       );
   }
+
+  
 
   // Validação de campos - box direito
   validSearchFields(): boolean {
