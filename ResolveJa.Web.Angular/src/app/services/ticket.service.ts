@@ -12,10 +12,7 @@ export class TicketService {
 
   getSearch(cpf: string, urlEmpresa: string) {
 
-    let params = new HttpParams();
-    params.set('cpf', cpf);
-    params.set('urlEmpresa', urlEmpresa);
-
+    const params = new HttpParams().set('cpf', cpf).set('urlEmpresa', urlEmpresa);
     return this.http.get<Array<Ticket>>(`${API_CONFIG.baseUrl}/api/Tickets`, { params: params });
   }
 }
