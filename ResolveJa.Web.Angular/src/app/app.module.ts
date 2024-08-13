@@ -32,7 +32,8 @@ import { HomeComponent } from './components/home/home.component';
     ToastrModule.forRoot({
       timeOut: 4000,
       closeButton: true,
-      progressBar: true
+      progressBar: true,
+      preventDuplicates: true
     })
   ],
   providers: [provideNgxMask({})],
