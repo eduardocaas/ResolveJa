@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EmpresaService } from '../../services/empresa.service';
 import { FormControl, Validators } from '@angular/forms';
 import { TicketService } from '../../services/ticket.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-empresa',
@@ -29,7 +30,8 @@ export class EmpresaComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private empresaService: EmpresaService,
-    private ticketService: TicketService) { }
+    private ticketService: TicketService,
+    private toast: ToastrService) { }
 
   ngOnInit(): void {
     this.navTitle = document.getElementById('navTitle');
