@@ -55,7 +55,16 @@ export class EmpresaComponent implements OnInit {
 
   // Função que realiza busca de Tickets -> box direito
   search(): void {
-    alert(this.cpfSearch);
+    this.ticketService
+      .getSearch(this.cpfSearch, this.empresaUrl)
+      .subscribe(
+        (result) => {
+          console.log(result);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   // Validação de campos - box direito
